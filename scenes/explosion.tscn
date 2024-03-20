@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4mibbpufa0j1"]
+
+[ext_resource type="Texture2D" uid="uid://bi8d605eta34w" path="res://explosion.png" id="1_p3une"]
+[ext_resource type="Script" path="res://scripts/Explosion.gd" id="2_ro2o6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sl8i5"]
+radius = 12.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_adqsn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_p3une")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ExplosionArea" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sl8i5")
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_adqsn")
+frame_progress = 0.39169
+script = ExtResource("2_ro2o6")
+
+[node name="ExplosionPoint" type="Marker2D" parent="Explosion"]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="." to="Explosion" method="_on_explosion_area_body_entered"]
+[connection signal="animation_finished" from="Explosion" to="Explosion" method="_on_animation_finished"]
