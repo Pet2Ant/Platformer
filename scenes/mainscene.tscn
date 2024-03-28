@@ -151,7 +151,7 @@ texture = ExtResource("2_4hitb")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_h8eod")
 
-[node name="Node" type="Node"]
+[node name="Node2D" type="Node2D"]
 
 [node name="Grassland" type="Sprite2D" parent="."]
 position = Vector2(641, 141)
