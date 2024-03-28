@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckmo3yxf4jdq5"]
 
 [ext_resource type="Script" path="res://scripts/boomstick.gd" id="1_clt84"]
-[ext_resource type="Texture2D" uid="uid://mlcfy8adu7y" path="res://boom.png" id="2_i641x"]
+[ext_resource type="Texture2D" uid="uid://dwxq34cwtbr6q" path="res://Godotgraphs/robot_gun.png" id="2_qc0gs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0chn8"]
 radius = 70.0071
@@ -17,7 +17,7 @@ shape = SubResource("CircleShape2D_0chn8")
 [node name="stick" type="Sprite2D" parent="WeaponPivot"]
 texture_filter = 1
 position = Vector2(8, 0)
-texture = ExtResource("2_i641x")
+texture = ExtResource("2_qc0gs")
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/stick"]
 unique_name_in_owner = true
