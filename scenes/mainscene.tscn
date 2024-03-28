@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj1at7il1eg26"]
+[gd_scene load_steps=7 format=3 uid="uid://bj1at7il1eg26"]
 
-[ext_resource type="Texture2D" uid="uid://cokispch3qcfs" path="res://Brown.png" id="1_2t8bw"]
+[ext_resource type="Texture2D" uid="uid://bsgeewl4blsy0" path="res://grassland.png" id="1_o6q6d"]
 [ext_resource type="Texture2D" uid="uid://0f04t3a54sip" path="res://tilemap test 1.png" id="2_4hitb"]
 [ext_resource type="PackedScene" uid="uid://b62kr51eb8x8u" path="res://scenes/maincharacter.tscn" id="3_jgrpm"]
+[ext_resource type="Texture2D" uid="uid://ssfu1yoswy2b" path="res://Godotgraphs/robot_player-Sheet.png" id="4_0ao3h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h8eod"]
 texture = ExtResource("2_4hitb")
@@ -152,12 +153,10 @@ sources/0 = SubResource("TileSetAtlasSource_h8eod")
 
 [node name="Node" type="Node"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-texture_filter = 1
-offset_right = 1300.0
-offset_bottom = 399.0
-texture = ExtResource("1_2t8bw")
-stretch_mode = 1
+[node name="Grassland" type="Sprite2D" parent="."]
+position = Vector2(641, 141)
+scale = Vector2(0.761071, 0.761071)
+texture = ExtResource("1_o6q6d")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -172,3 +171,7 @@ position = Vector2(147, 288)
 position = Vector2(-1, 5)
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 10.0
+
+[node name="RobotPlayer-sheet" type="Sprite2D" parent="."]
+position = Vector2(-262, 557)
+texture = ExtResource("4_0ao3h")
