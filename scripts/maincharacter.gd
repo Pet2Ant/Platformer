@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 180.0
+const SPEED = 200.0
 const JUMP_VELOCITY = -600.0
 
 const COYOTE_TIME = 0.1
@@ -50,10 +50,13 @@ func _physics_process(delta):
 	var direction = Input.get_axis("Left", "Right")
 	if direction:
 		velocity.x = direction * SPEED
+		
+		
 		# Flip the sprite based on the direction of movement.
 		sprite_2d.flip_h = direction < 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, 10)
+		
 
 	move_and_slide()
 	
