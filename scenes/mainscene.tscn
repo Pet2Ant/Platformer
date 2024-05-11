@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj1at7il1eg26"]
+[gd_scene load_steps=9 format=3 uid="uid://bj1at7il1eg26"]
 
 [ext_resource type="Texture2D" uid="uid://biiikmj8pytjc" path="res://Grassland.jpg" id="1_wnbif"]
 [ext_resource type="Texture2D" uid="uid://0f04t3a54sip" path="res://tilemap test 1.png" id="2_4hitb"]
 [ext_resource type="PackedScene" uid="uid://b62kr51eb8x8u" path="res://scenes/maincharacter.tscn" id="3_jgrpm"]
 [ext_resource type="Texture2D" uid="uid://ssfu1yoswy2b" path="res://Godotgraphs/robot_player-Sheet.png" id="4_0ao3h"]
+[ext_resource type="PackedScene" uid="uid://dym34k4r1b56n" path="res://scenes/collectible.tscn" id="7_mi4hc"]
+[ext_resource type="Script" path="res://game_manager.gd" id="8_p053e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h8eod"]
 texture = ExtResource("2_4hitb")
@@ -151,7 +153,31 @@ texture = ExtResource("2_4hitb")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_h8eod")
 
-[node name="Node" type="Node"]
+[node name="Node2D" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.038
+anchor_top = 0.05
+anchor_right = 0.151
+anchor_bottom = 0.12
+offset_left = -0.104002
+offset_right = 0.191994
+
+[node name="PointsLabel" type="Label" parent="UI/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.971
+anchor_bottom = 0.893
+offset_top = 2.0
+offset_right = 0.000991821
+offset_bottom = -0.00400162
+text = "Points: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Grassland2" type="Sprite2D" parent="."]
 position = Vector2(3567, 1463)
@@ -185,3 +211,19 @@ texture = ExtResource("4_0ao3h")
 position = Vector2(4620, 1285)
 scale = Vector2(0.776648, 0.613169)
 texture = ExtResource("1_wnbif")
+
+[node name="Collectible" parent="." instance=ExtResource("7_mi4hc")]
+position = Vector2(305, 129)
+
+[node name="Collectible2" parent="." instance=ExtResource("7_mi4hc")]
+position = Vector2(236, 212)
+
+[node name="Collectible3" parent="." instance=ExtResource("7_mi4hc")]
+position = Vector2(341, 293)
+
+[node name="Collectible4" parent="." instance=ExtResource("7_mi4hc")]
+position = Vector2(55, 229)
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_p053e")
