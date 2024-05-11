@@ -5,7 +5,7 @@ const RANGE = 600
 var travelled_distance = 0
 const EXPLOSION_STRENGTH = 500.0 
 const EXPLOSION_RADIUS = 10.0
-const EXPLOSION = preload("res://scenes/explosion.tscn")
+const EXPLOSION = preload("res://scenes/Entities/explosion.tscn")
 
 
 func _physics_process(delta):
