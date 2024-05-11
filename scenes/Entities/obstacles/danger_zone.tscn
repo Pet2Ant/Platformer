@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlh8k3fhys1yr"]
+
+[ext_resource type="Script" path="res://scenes/Entities/obstacles/danger_zone.gd" id="1_4gljm"]
+
+[node name="DangerZone" type="Area2D"]
+light_mask = 4
+visibility_layer = 8
+script = ExtResource("1_4gljm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
