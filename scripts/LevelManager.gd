@@ -17,6 +17,7 @@ func  load_level(level_id : int) -> void:
 	unload_level()
 	GameManager.remove_points()
 	
+	
 	var level_data = get_level_data_by_id(level_id)
 	if not level_data:
 		return 
