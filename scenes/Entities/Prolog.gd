@@ -38,6 +38,7 @@ func flip():
 
 func die():
 	dead = true
+	GameManager.score += 100
 	speed = 0
 	queue_free()
 
