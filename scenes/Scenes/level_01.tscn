@@ -1821,6 +1821,20 @@ sources/9 = SubResource("TileSetAtlasSource_fwvxm")
 script = ExtResource("1_v61l8")
 level_id = 1
 
+[node name="EnemyHolder" type="Node2D" parent="."]
+
+[node name="PrologEnemy3" parent="EnemyHolder" instance=ExtResource("17_hsnpd")]
+position = Vector2(2196, 62)
+
+[node name="PrologEnemy" parent="EnemyHolder" instance=ExtResource("17_hsnpd")]
+position = Vector2(2722, -162)
+
+[node name="PrologEnemy4" parent="EnemyHolder" instance=ExtResource("17_hsnpd")]
+position = Vector2(3349, -161)
+
+[node name="PrologEnemy2" parent="EnemyHolder" instance=ExtResource("17_hsnpd")]
+position = Vector2(1693, -164)
+
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
 tile_set = SubResource("TileSet_ru2ol")
@@ -2041,17 +2055,3 @@ theme_override_colors/font_color = Color(0.027451, 0.0196078, 0.00392157, 1)
 theme_override_font_sizes/font_size = 24
 text = "0
 "
-
-[node name="EnemyHolder" type="Node2D" parent="."]
-
-[node name="PrologEnemy3" parent="EnemyHolder" instance=ExtResource("17_hsnpd")]
-position = Vector2(2196, 62)
-
-[node name="PrologEnemy" parent="EnemyHolder" instance=ExtResource("17_hsnpd")]
-position = Vector2(2722, -162)
-
-[node name="PrologEnemy2" parent="EnemyHolder" instance=ExtResource("17_hsnpd")]
-position = Vector2(1693, -164)
-
-[node name="PrologEnemy" parent="." instance=ExtResource("17_hsnpd")]
-position = Vector2(3349, -161)

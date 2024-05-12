@@ -183,3 +183,4 @@ func reset_player() -> void:
 	
 func die():
 	GameManager.respawn_player()
+	SPEED = 260.0

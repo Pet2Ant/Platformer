@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://gei8bv0rwtq"]
+
+[ext_resource type="Script" path="res://scripts/PrologAttack.gd" id="1_38cqa"]
+[ext_resource type="Texture2D" uid="uid://bi8d605eta34w" path="res://explosion.png" id="2_ivrap"]
+[ext_resource type="Texture2D" uid="uid://dtcnuni5m00oj" path="res://Prolog.png" id="3_t0ukv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qdjnh"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_xayp7"]
+resource_name = "upon_impact"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_t0ukv"), ExtResource("2_ivrap")]
+}
+
+[sub_resource type="Animation" id="Animation_tf1hp"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0fe7e"]
+_data = {
+"RESET": SubResource("Animation_tf1hp"),
+"upon_impact": SubResource("Animation_xayp7")
+}
+
+[node name="PrologAttack" type="Node2D"]
+script = ExtResource("1_38cqa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.823307, 0.823307)
+texture = ExtResource("2_ivrap")
+
+[node name="Hitbox" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_qdjnh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0fe7e")
+}
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

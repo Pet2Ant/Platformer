@@ -18,6 +18,7 @@ func return_points() -> int:
 func respawn_player():
 	if current_checkpoint != null:
 		player.position = current_checkpoint.global_position
+		player.SPEED = 0.0
 		
 func gain_coins(coins_gained):
 	coins += coins_gained
