@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsmbcxx11gg4c"]
+[gd_scene load_steps=7 format=3 uid="uid://cp153g5l22o4c"]
 
 [ext_resource type="Texture2D" uid="uid://bv8misya2fi3d" path="res://finalDay.PNG" id="1_7bntd"]
 [ext_resource type="Texture2D" uid="uid://7exmskm6yh6p" path="res://desert_tileset_testing.png" id="2_dcpaf"]
-[ext_resource type="PackedScene" uid="uid://b62kr51eb8x8u" path="res://scenes/maincharacter.tscn" id="3_4fv7c"]
+[ext_resource type="PackedScene" uid="uid://b62kr51eb8x8u" path="res://scenes/Entities/maincharacter.tscn" id="3_4fv7c"]
 [ext_resource type="Texture2D" uid="uid://ssfu1yoswy2b" path="res://Godotgraphs/robot_player-Sheet.png" id="4_frcex"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ci087"]

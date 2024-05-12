@@ -13,7 +13,10 @@ func unload_level()->void:
 
 func  load_level(level_id : int) -> void:
 	print("Loading level : %s" % level_id)
+	print("Points are :%s" %GameManager.return_points())
 	unload_level()
+	GameManager.remove_points()
+	
 	var level_data = get_level_data_by_id(level_id)
 	if not level_data:
 		return 
@@ -28,10 +31,8 @@ func  load_level(level_id : int) -> void:
 		print("Level does not exist")
 func get_level_data_by_id(id : int) -> LevelData:
 	var level_to_return : LevelData = null
-
 	for lvl: LevelData in levels:
 		if lvl.level_id == id :
 			level_to_return = lvl
-
 	return level_to_return
 

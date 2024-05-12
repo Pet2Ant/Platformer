@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b081ahde2bg0m"]
+
+[ext_resource type="Texture2D" uid="uid://tmmiivyl4o4s" path="res://athtech_assets/tiles/spikes.png" id="1_befhq"]
+[ext_resource type="Script" path="res://scripts/spikes.gd" id="1_je1eo"]
+
+[node name="Spikes" type="Node2D"]
+script = ExtResource("1_je1eo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_befhq")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-13, 13, -4, -5, 1, 2, 3, -6, 10, 7, 11, 12)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

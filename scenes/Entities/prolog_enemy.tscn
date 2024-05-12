@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch6ln8e6pbh7m"]
+[gd_scene load_steps=5 format=3 uid="uid://ch6ln8e6pbh7m"]
 
+[ext_resource type="Script" path="res://scenes/Entities/Prolog.gd" id="1_06vfi"]
 [ext_resource type="Texture2D" uid="uid://be75kpnn31p5l" path="res://Godotgraphs/prolog.png" id="1_ypgnd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vygl2"]
 radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqpps"]
-radius = 24.0
+radius = 16.0
 
 [node name="PrologEnemy" type="CharacterBody2D"]
 motion_mode = 1
+script = ExtResource("1_06vfi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vygl2")
@@ -18,7 +20,10 @@ shape = SubResource("CircleShape2D_vygl2")
 position = Vector2(-1, 0)
 texture = ExtResource("1_ypgnd")
 
-[node name="AttackRange" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackRange"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_rqpps")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 319)

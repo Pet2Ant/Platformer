@@ -81,7 +81,7 @@ class_name Player
 extends CharacterBody2D
 
 
-@export var SPEED : float = 200
+@export var SPEED : float = 260
 @export var JUMP_VELOCITY : float = -600.0
 @export var jump_time : float = 0.25
 @export var COYOTE_TIME = 0.075
@@ -96,9 +96,10 @@ var applied_impulse_force = 5
 var can_control : bool = true
 var force_timer = 0.0
 var force_duration = 0.5  
-
 @onready var sprite_2d = $AnimatedSprite2D
 
+func _ready():
+	GameManager.player = self
 
 func _physics_process(delta):
 	if not can_control: return 
@@ -152,7 +153,8 @@ func _physics_process(delta):
 		sprite_2d.flip_h = direction < 0
 		
 	move_and_slide()
-	
+	if position.y >= 600:
+		die()
 func add_force(explosion_position : Vector2):
 	applied_impulse = true
 	
@@ -169,6 +171,9 @@ func handle_danger() -> void:
 	print("Player died")
 	visible = false
 	can_control = false
+	var lvl = LevelManager.loaded_level.level_id
+	LevelManager.unload_level()
+	LevelManager.load_level(lvl)
 	await get_tree().create_timer(1).timeout
 	reset_player()
 func reset_player() -> void:
@@ -176,3 +181,5 @@ func reset_player() -> void:
 	visible = true
 	can_control = true
 	
+func die():
+	GameManager.respawn_player()
