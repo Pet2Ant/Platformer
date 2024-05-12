@@ -5,26 +5,26 @@ var current_checkpoint : Checkpoint
 var player : Player 
 var points = 0;
 var coins = 0;
-var initial_checkpoint = $CheckpointHolder.get_node("Checkpoint")
+var starting_pos = Vector2(180,200)
 
 func add_point() :
 	points += 1;
 	print("Points: ", points);
 	points_label.text = "Points: " +  str(points);
 func remove_points() -> void :
-	points = 0;
+	coins = 0;
 	return
 func return_points() -> int:
 	return points
 func respawn_player():
-	print(player.health)
-	print(player.max_health)
-	if current_checkpoint != null:
+	if player.health == 0:
+		print("????")
+		current_checkpoint = starting_pos
 		player.position = current_checkpoint.global_position
-		player.SPEED = 0.0
-	elif (player.health == 0 && current_checkpoint.global_position != initial_checkpoint):
-		initial_checkpoint.activate()
+	elif player.health !=0 &&  current_checkpoint != null:
+		print("i respawned here iguess?")
 		player.position = current_checkpoint.global_position
+	
 		
 		
 func gain_coins(coins_gained):

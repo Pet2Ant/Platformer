@@ -43,10 +43,14 @@ func die():
 
 func shoot():
 	var spawned_attack = prolog_attack.instantiate()
+	spawned_attack.position = Vector2(0,42)
 	add_child(spawned_attack)
+	spawned_attack.fall()
 	
 	
 	
 func _on_hitbox_area_entered(area):
 	if area.get_parent() is Player && !dead:
+		area.get_parent().take_damage(1)
 		area.get_parent().die()
+	

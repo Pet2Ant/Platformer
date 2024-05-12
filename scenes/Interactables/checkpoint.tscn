@@ -1,22 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwy63okfqf7an"]
+[gd_scene load_steps=10 format=3 uid="uid://cwy63okfqf7an"]
 
 [ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_336ke"]
-[ext_resource type="Texture2D" uid="uid://c381mwya3wo1v" path="res://Java.png" id="1_fmtyy"]
+[ext_resource type="Texture2D" uid="uid://c20j5i6t4ojm7" path="res://athtech_assets/items/checkpoint.png" id="2_rlkpa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6riu"]
+atlas = ExtResource("2_rlkpa")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8lp2"]
+atlas = ExtResource("2_rlkpa")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfm43"]
+atlas = ExtResource("2_rlkpa")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaqkb"]
+atlas = ExtResource("2_rlkpa")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vggr0"]
+atlas = ExtResource("2_rlkpa")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17n7v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6riu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8lp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfm43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uaqkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vggr0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qu1p8"]
-size = Vector2(237, 206)
+size = Vector2(72, 59)
 
 [node name="Checkpoint" type="Node2D"]
 script = ExtResource("1_336ke")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_fmtyy")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_17n7v")
+autoplay = "default"
+frame_progress = 0.342487
 
 [node name="Area2D" type="Area2D" parent="."]
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(5.5, -3)
+position = Vector2(-1, -5.5)
 shape = SubResource("RectangleShape2D_qu1p8")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

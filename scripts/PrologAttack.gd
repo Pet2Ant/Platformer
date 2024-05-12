@@ -1,27 +1,28 @@
 extends Node2D
 
 
-var direction = Vector2(0,-100)
+@onready var sprite_2d = get_node("Hitbox/Attack")
 var speed = 300
 var current_speed = 0.0
 var lifetime = 4.0
 var hit = false
-@onready var spawn_pos = global_position 
 func _physics_process(delta):
 	position.y += current_speed*delta
-func _ready():
-	fall()
+
 	
 	
 
 func fall():
 	current_speed = speed
 	await get_tree().create_timer(lifetime).timeout
-	position = spawn_pos
+	die()
 	current_speed = 0 
-
+func die():
+	sprite_2d.animation = 'explosion'
+	queue_free()
+	
 func _on_hitbox_area_entered(area):
-	print(area.get_parent().is_in_group("Enemies"))
+	print("Collided with ", area.name, " which is a ", area.get_class())
 	if area.get_parent() is Player:
 		print("player is hit ")
 		hit = false
@@ -30,10 +31,25 @@ func _on_hitbox_area_entered(area):
 		hit = true
 		speed =0 
 	if area.get_parent() is Player && !hit:
+		
+		area.get_parent().take_damage(1)
 		area.get_parent().die()
-		explode(area)
+		
 	
 	
-func explode(area):
-	if area.get_parent():
-		$AnimationPlayer.play("upon_impact")
+	
+
+
+
+
+
+
+func _on_hitbox_body_entered(body):
+		current_speed = 0
+		die()
+
+
+#func _on_hitbox_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	#sprite_2d.animation = 'explosion'
+	#die()
+	

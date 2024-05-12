@@ -19,7 +19,7 @@ tracks/0/path = NodePath("Prolog:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.4001, 0.7, 1),
+"times": PackedFloat32Array(0.1, 0.4, 0.7, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-1, 0), Vector2(-1, 12), Vector2(-1, 0), Vector2(-1, -12)]
@@ -73,15 +73,15 @@ motion_mode = 1
 script = ExtResource("1_06vfi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 11.8764)
+position = Vector2(0, -8.57556)
 shape = SubResource("CircleShape2D_vygl2")
 
 [node name="Prolog" type="Sprite2D" parent="."]
-position = Vector2(-1, 11.8769)
+position = Vector2(-1, -8.57556)
 texture = ExtResource("1_ypgnd")
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2(0, 11.8764)
+position = Vector2(0, -8.57556)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_rqpps")
@@ -96,6 +96,6 @@ libraries = {
 autoplay = "Flying"
 
 [node name="EggLauncher" type="Marker2D" parent="."]
-position = Vector2(-1, 1)
+position = Vector2(0, 44)
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

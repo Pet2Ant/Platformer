@@ -95,7 +95,6 @@ position = Vector2(0.5, 0)
 sprite_frames = SubResource("SpriteFrames_8pldg")
 animation = &"walking"
 autoplay = "default"
-frame_progress = 0.581827
 
 [node name="Area2D" type="Area2D" parent="."]
 

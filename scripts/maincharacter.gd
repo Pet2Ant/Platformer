@@ -97,7 +97,7 @@ var can_control : bool = true
 var force_timer = 0.0
 var force_duration = 0.5  
 @onready var sprite_2d = $AnimatedSprite2D
-
+var starting_position = Vector2(180,200)
 var max_health = 3
 var health = 0
 var can_take_damage = true;
@@ -199,10 +199,14 @@ func handle_danger() -> void:
 	await get_tree().create_timer(1).timeout
 	reset_player()
 func reset_player() -> void:
-	global_position = LevelManager.loaded_level.level_start_pos.global_position
+	LevelManager.loaded_level.level_start_pos.global_position = starting_position
+	global_position = starting_position
 	visible = true
 	can_control = true
 	
 func die():
-	GameManager.respawn_player()
+	if health>0:
+		GameManager.respawn_player()
+	elif health<= 0:
+		take_damage(1)
 	SPEED = 260.0
