@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://bi13am72uaex"]
+
+[ext_resource type="Texture2D" uid="uid://tmmiivyl4o4s" path="res://athtech_assets/tiles/spikes.png" id="1_0tbem"]
+[ext_resource type="Script" path="res://scripts/falling_spikes.gd" id="1_24x71"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4nmup"]
+size = Vector2(20, 134.5)
+
+[sub_resource type="Animation" id="Animation_q77ab"]
+resource_name = "Shake"
+length = 0.6
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0398695, 0.205043, 0.392999, 0.589499),
+"transitions": PackedFloat32Array(1, 1.03526, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(-2, 8), Vector2(0, 8), Vector2(2, 8)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.592347),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fall"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_svlbo"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bk35o"]
+_data = {
+"RESET": SubResource("Animation_svlbo"),
+"Shake": SubResource("Animation_q77ab")
+}
+
+[node name="FallingSpikes" type="Node2D"]
+script = ExtResource("1_24x71")
+
+[node name="Spikes" type="Sprite2D" parent="."]
+position = Vector2(2, 8)
+rotation = 3.14159
+texture = ExtResource("1_0tbem")
+
+[node name="Hitbox" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+position = Vector2(2, 0)
+polygon = PackedVector2Array(-8, 0, 8, 0, 8, 0, 8, 4, 7, 5, 7, 7, 6, 8, 6, 10, 5, 11, 5, 12, 4, 13, 4, 14, 3, 14, 3, 13, 2, 12, 2, 10, 1, 9, 1, 7, -1, 7, -1, 10, -2, 10, -2, 12, -3, 13, -3, 14, -4, 14, -4, 13, -5, 11, -5, 10, -6, 9, -6, 7, -7, 7, -7, 5, -8, 4)
+
+[node name="PlayerDetect" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
+position = Vector2(2, 67.25)
+shape = SubResource("RectangleShape2D_4nmup")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bk35o")
+}
+blend_times = [&"Shake", &"Shake", 0.009]
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="PlayerDetect" to="." method="_on_player_detect_area_entered"]

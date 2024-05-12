@@ -98,7 +98,13 @@ var force_timer = 0.0
 var force_duration = 0.5  
 @onready var sprite_2d = $AnimatedSprite2D
 
+var max_health = 3
+var health = 0
+var can_take_damage = true;
+
+
 func _ready():
+	health = max_health
 	GameManager.player = self
 
 func _physics_process(delta):
@@ -167,6 +173,22 @@ func add_force(explosion_position : Vector2):
 	velocity.x = direction.x * SPEED/5
 	velocity.y = SPEED*direction.y/5
 	
+func take_damage(damage_amount : int):
+	if can_take_damage:
+		iframes()
+		
+		health -= damage_amount
+		
+		get_node("Healthbar2").update_healthbar(health, max_health)
+		
+		if health <= 0:
+			handle_danger()
+
+func iframes():
+	can_take_damage = false
+	await get_tree().create_timer(1).timeout
+	can_take_damage = true
+
 func handle_danger() -> void:
 	print("Player died")
 	visible = false
