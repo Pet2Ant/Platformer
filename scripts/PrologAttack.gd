@@ -17,7 +17,9 @@ func fall():
 	await get_tree().create_timer(lifetime).timeout
 	die()
 	current_speed = 0 
+	
 func die():
+	
 	sprite_2d.animation = 'explosion'
 	queue_free()
 	
@@ -32,7 +34,7 @@ func _on_hitbox_area_entered(area):
 		speed =0 
 	if area.get_parent() is Player && !hit:
 		area.get_parent().take_damage(1)
-		area.get_parent().die()
+		
 		
 	
 	

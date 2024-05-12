@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nmup"]
 size = Vector2(20, 134.5)
 
+[sub_resource type="Animation" id="Animation_svlbo"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_q77ab"]
 resource_name = "Shake"
 length = 0.6
@@ -36,9 +39,6 @@ tracks/1/keys = {
 "method": &"fall"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_svlbo"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bk35o"]
 _data = {
