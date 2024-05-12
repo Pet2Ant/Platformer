@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch6ln8e6pbh7m"]
+[gd_scene load_steps=8 format=3 uid="uid://ch6ln8e6pbh7m"]
 
 [ext_resource type="Script" path="res://scenes/Entities/Prolog.gd" id="1_06vfi"]
 [ext_resource type="Texture2D" uid="uid://be75kpnn31p5l" path="res://Godotgraphs/prolog.png" id="1_ypgnd"]
@@ -68,26 +68,33 @@ _data = {
 "Flying": SubResource("Animation_qtxga")
 }
 
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_lj6ya"]
+length = 17.0
+
 [node name="PrologEnemy" type="CharacterBody2D" groups=["Enemies"]]
 motion_mode = 1
 script = ExtResource("1_06vfi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8.57556)
+position = Vector2(0, 8.47977)
 shape = SubResource("CircleShape2D_vygl2")
 
 [node name="Prolog" type="Sprite2D" parent="."]
-position = Vector2(-1, -8.57556)
+position = Vector2(-1, 8.47977)
 texture = ExtResource("1_ypgnd")
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2(0, -8.57556)
+position = Vector2(0, 8.47977)
+
+[node name="FloorCollider" type="RayCast2D" parent="Hitbox"]
+position = Vector2(0, -8.47977)
+target_position = Vector2(0, 32)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_rqpps")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 319)
+target_position = Vector2(0, 399)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -95,7 +102,13 @@ libraries = {
 }
 autoplay = "Flying"
 
-[node name="EggLauncher" type="Marker2D" parent="."]
-position = Vector2(0, 44)
+[node name="FloorDetect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="FloorDetector" type="CollisionShape2D" parent="FloorDetect"]
+position = Vector2(-1, 15)
+shape = SubResource("SeparationRayShape2D_lj6ya")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="FloorDetect" to="." method="_on_floor_detect_body_entered"]

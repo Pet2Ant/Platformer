@@ -6,9 +6,16 @@ var speed = -60.0
 var firerate = 2
 var max_health = 3
 var health
-
+var target: Node
 var facing_right = true;
 var dead = false;
+var original_position ;
+var drop_speed = 400;
+var attack_mode = false;
+var should_rise = false;
+var bump_speed = 200;
+var is_bumped = false;
+@onready var floor_detector = $Hitbox/FloorCollider
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
@@ -16,17 +23,27 @@ func _ready():
 	$AnimationPlayer.play("Flying")
 	health = max_health
 	shooting = true
+	original_position = position
 	shoot()
+	
+	
 	
 
 func _physics_process(delta):
-	# remove the gravity.
-	if is_on_floor():
-		velocity.y += -gravity * delta
-	if !$RayCast2D.is_colliding() && !is_on_floor():
+	if !$RayCast2D.is_colliding():
 		flip()
-	velocity.x = speed
+		
+	elif $RayCast2D.is_colliding():
+		var collider = $RayCast2D.get_collider()
+		if collider is Player and not attack_mode:
+			attack_mode = true
+			velocity.y = drop_speed
+	velocity.x = speed 
+	if should_rise:
+		rise_up(delta)
 	move_and_slide()
+
+	
 func flip():
 	facing_right = !facing_right
 	scale.x = abs(scale.x)*-1
@@ -34,12 +51,23 @@ func flip():
 		speed = abs(speed)
 	else:
 		speed = abs(speed)*-1
-
-
+func _on_floor_detect_body_entered(body):
+	if not body is Player:
+		should_rise = true
+func rise_up(delta):
+	if position.y > original_position.y:
+		velocity.y = -drop_speed
+	else:
+		position.y = original_position.y  # Snap back to the original altitude.
+		velocity.y = 0  
+		should_rise = false  # No longer need to rise up.
+		attack_mode = false
+	move_and_slide()
 func die():
-	dead = true
-	speed = 0
-	queue_free()
+	if not dead:
+		dead = true
+		speed = 0
+		queue_free()
 
 func shoot():
 	var spawned_attack = prolog_attack.instantiate()
@@ -48,9 +76,16 @@ func shoot():
 	spawned_attack.fall()
 	
 	
-	
 func _on_hitbox_area_entered(area):
 	if area.get_parent() is Player && !dead:
 		area.get_parent().take_damage(1)
 		area.get_parent().die()
-	
+func take_damage(damage_amount):
+	if !dead:
+		health -= damage_amount
+		if health <= 0:
+			die()
+
+
+
+

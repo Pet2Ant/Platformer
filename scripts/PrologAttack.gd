@@ -31,7 +31,6 @@ func _on_hitbox_area_entered(area):
 		hit = true
 		speed =0 
 	if area.get_parent() is Player && !hit:
-		
 		area.get_parent().take_damage(1)
 		area.get_parent().die()
 		
@@ -49,7 +48,3 @@ func _on_hitbox_body_entered(body):
 		die()
 
 
-#func _on_hitbox_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	#sprite_2d.animation = 'explosion'
-	#die()
-	

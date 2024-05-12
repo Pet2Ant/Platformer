@@ -25,7 +25,7 @@ func _on_body_entered(body):
 	explode()
 	queue_free()
 	if body.has_method("take_damage"):
-		body.take_damage()
+		body.take_damage(1)
 
 func explode():
 	var explosion = EXPLOSION.instantiate()

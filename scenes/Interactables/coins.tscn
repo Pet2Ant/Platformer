@@ -77,7 +77,7 @@ script = ExtResource("1_jdtvr")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_bnq2u")
 autoplay = "default"
-frame_progress = 0.343615
+frame_progress = 0.851659
 
 [node name="Area2D" type="Area2D" parent="."]
 monitorable = false
