@@ -81,12 +81,15 @@ func flip():
 func take_damage(damage_amount):
 	if !dead:
 		health -= damage_amount
+		$AnimationPlayer.play("onhit")
 		if health <= 0:
 			die()
 func die():
 	if not dead:
 		dead = true
 		speed = 0
+		$AnimationPlayer.play("Die")
+		await get_tree().create_timer(0.7).timeout
 		queue_free()
 
 func _on_player_monitor_area_entered(area):

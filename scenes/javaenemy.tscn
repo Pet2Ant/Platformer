@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7yyeeytwrw0m"]
+
+[ext_resource type="Texture2D" uid="uid://b2d864aotdbys" path="res://athtech_assets/enemies/java.png" id="1_75a04"]
+[ext_resource type="Script" path="res://scripts/javaenemy.gd" id="1_sk0l3"]
+[ext_resource type="Texture2D" uid="uid://cuy2gojski6rp" path="res://athtech_assets/enemies/fatjava.png" id="2_t0yhr"]
+
+[sub_resource type="Animation" id="Animation_5k8o5"]
+resource_name = "Fire"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_75a04"), ExtResource("2_t0yhr"), ExtResource("1_75a04")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_62gpj"]
+resource_name = "Die"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100)]
+}
+
+[sub_resource type="Animation" id="Animation_wq71q"]
+resource_name = "onhit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1muuf"]
+_data = {
+"Die": SubResource("Animation_62gpj"),
+"Fire": SubResource("Animation_5k8o5"),
+"onhit": SubResource("Animation_wq71q")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvvlt"]
+size = Vector2(21, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0col"]
+size = Vector2(32, 31)
+
+[node name="Java" type="StaticBody2D"]
+script = ExtResource("1_sk0l3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_t0yhr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1muuf")
+}
+autoplay = "Fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, 0)
+shape = SubResource("RectangleShape2D_pvvlt")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_h0col")
+
+[node name="Firepoint" type="Marker2D" parent="."]
+position = Vector2(-3, 3)
+scale = Vector2(-1, 1)

@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://crin0w4eui2mg"]
+
+[ext_resource type="Texture2D" uid="uid://coxscttudowk1" path="res://athtech_assets/items/powerup.png" id="1_xy3nw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phgf8"]
+atlas = ExtResource("1_xy3nw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p4vhj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xy3nw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phgf8")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_gr4wq"]
+resource_name = "MiniJump"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cy4ib"]
+_data = {
+"MiniJump": SubResource("Animation_gr4wq")
+}
+
+[node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p4vhj")
+frame_progress = 0.888184
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cy4ib")
+}

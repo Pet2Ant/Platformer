@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b62kr51eb8x8u"]
+[gd_scene load_steps=18 format=3 uid="uid://b62kr51eb8x8u"]
 
 [ext_resource type="Script" path="res://scripts/maincharacter.gd" id="1_8jnyu"]
 [ext_resource type="Texture2D" uid="uid://jyg53gnkvtbg" path="res://athtech_assets/main character/robot player-Sheet.png" id="3_nmt3h"]
@@ -79,6 +79,26 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8jr7c"]
 
+[sub_resource type="Animation" id="Animation_mf85u"]
+resource_name = "iframes"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gwihj"]
+_data = {
+"iframes": SubResource("Animation_mf85u")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_8jnyu")
 
@@ -100,3 +120,8 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_8jr7c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gwihj")
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dt7lxw5amov3s"]
+[gd_scene load_steps=35 format=3 uid="uid://dt7lxw5amov3s"]
 
 [ext_resource type="Texture2D" uid="uid://0f04t3a54sip" path="res://tilemap test 1.png" id="1_pqhes"]
 [ext_resource type="Script" path="res://scripts/Classes/level.gd" id="1_v61l8"]
@@ -19,7 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://d0avc2kwvncap" path="res://scenes/Interactables/coins.tscn" id="16_ps4r3"]
 [ext_resource type="PackedScene" uid="uid://ch6ln8e6pbh7m" path="res://scenes/Entities/prolog_enemy.tscn" id="17_hsnpd"]
 [ext_resource type="PackedScene" uid="uid://coejmhx0hhcij" path="res://scenes/Entities/android_enemy.tscn" id="20_mw63m"]
-[ext_resource type="PackedScene" path="res://scenes/Interactables/health_up.tscn" id="21_s0hxg"]
+[ext_resource type="PackedScene" uid="uid://b7yyeeytwrw0m" path="res://scenes/javaenemy.tscn" id="21_rtokx"]
+[ext_resource type="PackedScene" uid="uid://dbhq47odoifqn" path="res://scenes/Interactables/health_up.tscn" id="21_s0hxg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h8eod"]
 texture = ExtResource("1_pqhes")
@@ -1839,11 +1840,14 @@ layer_1/tile_data = PackedInt32Array()
 
 [node name="EnemyHolder" type="Node2D" parent="."]
 
+[node name="AndroidEnemy3" parent="EnemyHolder" instance=ExtResource("20_mw63m")]
+position = Vector2(2789, 53)
+
+[node name="AndroidEnemy4" parent="EnemyHolder" instance=ExtResource("20_mw63m")]
+position = Vector2(2388, 263)
+
 [node name="AndroidEnemy2" parent="EnemyHolder" instance=ExtResource("20_mw63m")]
 position = Vector2(296, 131)
-
-[node name="AndroidEnemy" parent="EnemyHolder" instance=ExtResource("20_mw63m")]
-position = Vector2(330, 293)
 
 [node name="PrologEnemy3" parent="EnemyHolder" instance=ExtResource("17_hsnpd")]
 position = Vector2(2196, 62)
@@ -1869,7 +1873,8 @@ offset_right = -13.0
 offset_bottom = -21.0
 
 [node name="Camera2D" type="Camera2D" parent="MainAvatar"]
-position = Vector2(-1, 5)
+position = Vector2(1, 1)
+position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 10.0
 drag_horizontal_enabled = true
@@ -2236,11 +2241,8 @@ position = Vector2(3433, 43)
 [node name="HealthUp7" parent="HealthUpHolder" instance=ExtResource("21_s0hxg")]
 position = Vector2(3938, 155)
 
-[node name="AndroidEnemy" parent="." instance=ExtResource("20_mw63m")]
-position = Vector2(2789, 53)
-
-[node name="AndroidEnemy2" parent="." instance=ExtResource("20_mw63m")]
-position = Vector2(2388, 263)
+[node name="Java" parent="." instance=ExtResource("21_rtokx")]
+position = Vector2(479, 287)
 
 [connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer/Resume" to="UIManager" method="_on_resume_pressed"]
