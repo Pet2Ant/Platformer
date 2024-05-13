@@ -185,7 +185,7 @@ func take_damage(damage_amount : int):
 			handle_danger()
 
 func iframes():
-	can_take_damage = false
+	can_take_damage = false	
 	await get_tree().create_timer(1).timeout
 	can_take_damage = true
 

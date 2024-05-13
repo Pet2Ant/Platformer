@@ -1,0 +1,110 @@
+[gd_scene load_steps=13 format=3 uid="uid://coejmhx0hhcij"]
+
+[ext_resource type="Script" path="res://scenes/Entities/Android.gd" id="1_bjqn4"]
+[ext_resource type="Texture2D" uid="uid://barv6btxmys5d" path="res://athtech_assets/enemies/android_sword2.png" id="1_qkht2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxg40"]
+atlas = ExtResource("1_qkht2")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0unt"]
+atlas = ExtResource("1_qkht2")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wvu2"]
+atlas = ExtResource("1_qkht2")
+region = Rect2(12, 0, 42, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48du8"]
+atlas = ExtResource("1_qkht2")
+region = Rect2(54, 0, 42, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5xem"]
+atlas = ExtResource("1_qkht2")
+region = Rect2(18, 0, 39, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evnsn"]
+atlas = ExtResource("1_qkht2")
+region = Rect2(12, 0, 42, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsyux"]
+atlas = ExtResource("1_qkht2")
+region = Rect2(12, 0, 42, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hg3iq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxg40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0unt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wvu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48du8")
+}],
+"loop": false,
+"name": &"attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5xem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evnsn")
+}],
+"loop": false,
+"name": &"charging",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsyux")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2uda"]
+radius = 15.0
+height = 36.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgomv"]
+size = Vector2(192, 19.5)
+
+[node name="AndroidEnemy" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_bjqn4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_hg3iq")
+animation = &"attacking"
+autoplay = "idle"
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(3, 0)
+shape = SubResource("CapsuleShape2D_x2uda")
+
+[node name="CheckForGap" type="RayCast2D" parent="Hitbox"]
+position = Vector2(-10, 1)
+target_position = Vector2(0, 40)
+collide_with_areas = true
+
+[node name="PlayerMonitor" type="Area2D" parent="."]
+position = Vector2(-1, 0)
+collision_layer = 0
+collision_mask = 3
+
+[node name="CheckForPlayer" type="CollisionShape2D" parent="PlayerMonitor"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_pgomv")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="PlayerMonitor" to="." method="_on_player_monitor_area_entered"]

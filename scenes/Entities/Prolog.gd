@@ -79,8 +79,8 @@ func shoot():
 func _on_hitbox_area_entered(area):
 	if area.get_parent() is Player && !dead:
 		area.get_parent().take_damage(1)
-		area.get_parent().die()
 func take_damage(damage_amount):
+	print("im taking damage")
 	if !dead:
 		health -= damage_amount
 		if health <= 0:
