@@ -35,4 +35,3 @@ func get_level_data_by_id(id : int) -> LevelData:
 		if lvl.level_id == id :
 			level_to_return = lvl
 	return level_to_return
-

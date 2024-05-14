@@ -114,7 +114,7 @@ func take_damage(damage_amount : int):
 func iframes():
 	can_take_damage = false	
 	$AnimationPlayer.play("iframes")
-	await get_tree().create_timer(1).timeout
+	await $AnimationPlayer.animation_finished
 	can_take_damage = true
 	
 func power_up(power_up):
@@ -126,16 +126,13 @@ func downgrade_power_up():
 	if boomstick_node:
 		boomstick_node.cooldown_power_up(0.8)
 func handle_danger() -> void:
-	print("Player died")
 	can_control = false
-	$AnimationPlayer.play("Death")
-	$AnimatedSprite2D.play("Death")
-	await get_tree().create_timer(1.4).timeout
+	$AnimationPlayer.play("die")
+	await $AnimationPlayer.animation_finished
 	visible = false
 	var lvl = LevelManager.loaded_level.level_id
 	LevelManager.unload_level()
 	LevelManager.load_level(lvl)
-	await get_tree().create_timer(1).timeout
 	reset_player()
 func reset_player() -> void:
 	LevelManager.loaded_level.level_start_pos.global_position = starting_position

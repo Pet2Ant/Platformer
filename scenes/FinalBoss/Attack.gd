@@ -2,7 +2,7 @@ extends State
 
 func enter():
 	super.enter()
-	combo()
+	
 	
 func attack(move = "1"):
 	animation_player.play("attack_" + move)
@@ -19,3 +19,11 @@ func combo():
 func transition():
 	if owner.direction.length() >40 :
 		get_parent().change_state("Follow")
+
+
+func _on_area_2d_area_entered(area):
+	get_tree().create_timer(0.6).timeout
+	if area.get_parent() is Player:
+		combo()
+		area.get_parent().take_damage(1)
+		print(area.get_parent().health)

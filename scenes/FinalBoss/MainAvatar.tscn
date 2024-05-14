@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpb3nj6qe5pwu"]
+[gd_scene load_steps=19 format=3 uid="uid://dpb3nj6qe5pwu"]
 
 [ext_resource type="Script" path="res://scripts/maincharacter.gd" id="1_8jnyu"]
 [ext_resource type="Texture2D" uid="uid://jyg53gnkvtbg" path="res://athtech_assets/main character/robot player-Sheet.png" id="3_nmt3h"]
@@ -94,8 +94,25 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_bb205"]
+resource_name = "die"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0), Vector2(25, -25), Vector2(-25, -50), Vector2(0.5, -75), Vector2(0.5, -100), Vector2(0.5, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwihj"]
 _data = {
+"die": SubResource("Animation_bb205"),
 "iframes": SubResource("Animation_mf85u")
 }
 
@@ -113,6 +130,7 @@ position = Vector2(1, 7)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, 0)
 sprite_frames = SubResource("SpriteFrames_8pldg")
+animation = &"walking"
 autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -16,3 +16,11 @@ func _physics_process(delta):
 
 func take_damage(dmg):
 	queue_free()
+
+
+func _on_area_2d_area_entered(area):
+	if area.get_parent() is Player:
+		print("hello?")
+		area.get_parent().take_damage(1)
+		queue_free()
+

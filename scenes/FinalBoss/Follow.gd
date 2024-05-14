@@ -12,7 +12,6 @@ func exit():
 	super.exit()
 	owner.set_physics_process(false)
 func transition():
-	print("im inside follow, giving owner dir", owner.direction.length())
 	if owner.direction.length() < 40:
 		get_parent().change_state("Attack")
 	if owner.direction.length() > 190:
