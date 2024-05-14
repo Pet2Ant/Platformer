@@ -110,7 +110,15 @@ func iframes():
 	$AnimationPlayer.play("iframes")
 	await get_tree().create_timer(1).timeout
 	can_take_damage = true
-
+	
+func power_up(power_up):
+	var boomstick_node = get_node("Boomstick")
+	if boomstick_node:
+		boomstick_node.cooldown_power_up(power_up)
+func downgrade_power_up():
+	var boomstick_node = get_node("Boomstick")
+	if boomstick_node:
+		boomstick_node.cooldown_power_up(0.8)
 func handle_danger() -> void:
 	print("Player died")
 	visible = false

@@ -11,9 +11,9 @@ var points = 0
 var coins = 0
 var score : int = 0
 var starting_pos = Vector2(180,200)
-
+var power_up_duration = 30.0
 var paused = false
-
+var playerNode : Node2D
 func add_point() :
 	points += 1
 	print("Points: ", points);
@@ -34,13 +34,28 @@ func respawn_player():
 	elif player.health !=0 &&  current_checkpoint != null:
 		print("i respawned here iguess?")
 		player.position = current_checkpoint.global_position
-	
 		
 		
 func gain_coins(coins_gained):
 	coins += coins_gained
 	emit_signal("gained_coins", coins)
 
+func power_up(power_up,body):
+	playerNode = body
+	playerNode.power_up(power_up)
+	var timer = Timer.new()
+	timer.wait_time = power_up_duration
+	timer.one_shot = true
+	add_child(timer)
+	timer.connect("timeout",Callable(self, "_on_Timer_timeout")) 
+	timer.start()
+	
+
+func _on_Timer_timeout():
+	playerNode.downgrade_power_up()
+
+
+	
 func win():
 	win_screen.visible = true
 	set_process_input(false)  

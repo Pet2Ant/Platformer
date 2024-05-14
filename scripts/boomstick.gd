@@ -1,3 +1,4 @@
+class_name Boomstick
 extends Area2D
 
 var direction = Vector2()
@@ -13,6 +14,9 @@ func _process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and timer >= cooldown:
 		shoot()
 		timer = 0.0  
+
+func cooldown_power_up(power_up):
+	cooldown = power_up
 
 func shoot():
 	const BULLET = preload("res://scenes/Entities/bullet.tscn")

@@ -67,6 +67,8 @@ func die():
 	if not dead:
 		dead = true
 		speed = 0
+		$AnimationPlayer.play("Die")
+		await get_tree().create_timer(0.5).timeout
 		queue_free()
 
 func shoot():
@@ -83,6 +85,9 @@ func take_damage(damage_amount):
 	print("im taking damage")
 	if !dead:
 		health -= damage_amount
+		$AnimationPlayer.play("OnHit")
+		await get_tree().create_timer(0.5).timeout
+		$AnimationPlayer.play("Flying")
 		if health <= 0:
 			die()
 

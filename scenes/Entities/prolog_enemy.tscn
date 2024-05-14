@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch6ln8e6pbh7m"]
+[gd_scene load_steps=10 format=3 uid="uid://ch6ln8e6pbh7m"]
 
 [ext_resource type="Script" path="res://scenes/Entities/Prolog.gd" id="1_06vfi"]
 [ext_resource type="Texture2D" uid="uid://be75kpnn31p5l" path="res://Godotgraphs/prolog.png" id="1_ypgnd"]
@@ -8,6 +8,34 @@ radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqpps"]
 radius = 16.0
+
+[sub_resource type="Animation" id="Animation_w0i8i"]
+resource_name = "Die"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prolog:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, 4.88889), Vector2(-1, 100), Vector2(-1, 150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prolog:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.490196), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_qtxga"]
 resource_name = "Flying"
@@ -63,9 +91,27 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_uv56c"]
+resource_name = "OnHit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prolog:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.882353, 0, 0, 0.454902), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pp46v"]
 _data = {
-"Flying": SubResource("Animation_qtxga")
+"Die": SubResource("Animation_w0i8i"),
+"Flying": SubResource("Animation_qtxga"),
+"OnHit": SubResource("Animation_uv56c")
 }
 
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_lj6ya"]
@@ -76,15 +122,15 @@ motion_mode = 1
 script = ExtResource("1_06vfi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8.47977)
+position = Vector2(0, -2.48241)
 shape = SubResource("CircleShape2D_vygl2")
 
 [node name="Prolog" type="Sprite2D" parent="."]
-position = Vector2(-1, 8.47977)
+position = Vector2(-1, -2.48241)
 texture = ExtResource("1_ypgnd")
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2(0, 8.47977)
+position = Vector2(0, -2.48241)
 
 [node name="FloorCollider" type="RayCast2D" parent="Hitbox"]
 position = Vector2(0, -8.47977)
