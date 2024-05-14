@@ -79,8 +79,8 @@ func restart():
 	current_checkpoint = null
 	
 func load_world():
-	#get_tree().paused = false
-	#set_process_input(true)  
+	get_tree().paused = false
+	set_process_input(true)  
 	get_tree().change_scene_to_file("res://scenes/FinalBoss/boss_room.tscn")
 
 func quit():
