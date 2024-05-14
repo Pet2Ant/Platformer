@@ -3,7 +3,7 @@ extends Node2D
 
 
 @onready var debug = owner.find_child("debug")
-@onready var player = owner.get_parent().find_child("Player")
+@onready var player = owner.get_parent().find_child("MainAvatar")
 @onready var animation_player = owner.find_child("AnimationPlayer")
 # Called when the node enters the scene tree for the first time.
 func _ready():

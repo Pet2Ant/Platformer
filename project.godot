@@ -34,7 +34,7 @@ enabled=PackedStringArray("res://addons/copilot/plugin.cfg", "res://addons/gdscr
 [importer_defaults]
 
 animation_library={
-"animation/fps": 60.0
+"animation/fps": 30.0
 }
 
 [input]

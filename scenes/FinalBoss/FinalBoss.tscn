@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://byo7ivco7f3d2"]
+[gd_scene load_steps=82 format=3 uid="uid://byo7ivco7f3d2"]
 
 [ext_resource type="Script" path="res://scenes/FinalBoss/FinalBoss.gd" id="1_11gyq"]
 [ext_resource type="Texture2D" uid="uid://dhc11rfgd75wg" path="res://athtech_assets/Undead executioner puppet/png/attacking.png" id="1_x8364"]
@@ -8,8 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://dkxu05amiilqu" path="res://athtech_assets/Undead executioner puppet/png/summon.png" id="5_xarua"]
 [ext_resource type="Script" path="res://scenes/FinalBoss/FiniteStateMachine.gd" id="6_mvq4c"]
 [ext_resource type="Script" path="res://scenes/FinalBoss/Idle.gd" id="7_4fhw2"]
-[ext_resource type="Script" path="res://scenes/FinalBoss/State.gd" id="7_uu8vj"]
 [ext_resource type="Script" path="res://scenes/FinalBoss/Follow.gd" id="9_7tjpq"]
+[ext_resource type="Script" path="res://scenes/FinalBoss/Attack.gd" id="10_fsh73"]
+[ext_resource type="Script" path="res://scenes/FinalBoss/Teleport.gd" id="11_qtj4d"]
+[ext_resource type="Script" path="res://scenes/FinalBoss/SpawnMinion.gd" id="12_vkw44"]
+[ext_resource type="PackedScene" uid="uid://bvavrqhdunot1" path="res://scenes/FinalBoss/minion.tscn" id="13_ll4ik"]
+[ext_resource type="Script" path="res://scenes/FinalBoss/Death.gd" id="14_8oa46"]
+[ext_resource type="PackedScene" uid="uid://cmmffkyw7i6em" path="res://scenes/FinalBoss/FinalDegree.tscn" id="15_a2q05"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4flib"]
 atlas = ExtResource("1_x8364")
@@ -577,6 +582,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FiniteStateMachine/Death")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"boss_slained"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_x8m1j"]
 resource_name = "idle"
@@ -636,6 +655,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FiniteStateMachine/Teleport")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"teleport"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_sfv2t"]
 resource_name = "summon"
@@ -664,6 +697,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FiniteStateMachine/SpawnMinion")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_un2b1"]
@@ -784,15 +831,17 @@ script = ExtResource("7_4fhw2")
 script = ExtResource("9_7tjpq")
 
 [node name="Attack" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("7_uu8vj")
+script = ExtResource("10_fsh73")
 
 [node name="Teleport" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("7_uu8vj")
+script = ExtResource("11_qtj4d")
 
 [node name="SpawnMinion" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("7_uu8vj")
+script = ExtResource("12_vkw44")
+minion_node = ExtResource("13_ll4ik")
 
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("7_uu8vj")
+script = ExtResource("14_8oa46")
+degree_node = ExtResource("15_a2q05")
 
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]

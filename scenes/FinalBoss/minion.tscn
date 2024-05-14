@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://bvavrqhdunot1"]
+
+[ext_resource type="Script" path="res://scenes/FinalBoss/minion.gd" id="1_0e8wv"]
+[ext_resource type="Texture2D" uid="uid://btqjo7xl3en1l" path="res://athtech_assets/Undead executioner puppet/png/Minion.png" id="2_wpafr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uiut"]
+atlas = ExtResource("2_wpafr")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfluc"]
+atlas = ExtResource("2_wpafr")
+region = Rect2(0, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3ahj"]
+atlas = ExtResource("2_wpafr")
+region = Rect2(18, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaflq"]
+atlas = ExtResource("2_wpafr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hwc2"]
+atlas = ExtResource("2_wpafr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hth0m"]
+atlas = ExtResource("2_wpafr")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpkhg"]
+atlas = ExtResource("2_wpafr")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l38gs"]
+atlas = ExtResource("2_wpafr")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oikw3"]
+atlas = ExtResource("2_wpafr")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8d35"]
+atlas = ExtResource("2_wpafr")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3fux"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uiut")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfluc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3ahj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaflq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hwc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hth0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpkhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l38gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oikw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8d35")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gtqyr"]
+radius = 8.06226
+
+[node name="Minion" type="CharacterBody2D"]
+script = ExtResource("1_0e8wv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o3fux")
+animation = &"Idle"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gtqyr")
