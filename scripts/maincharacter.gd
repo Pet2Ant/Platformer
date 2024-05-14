@@ -22,7 +22,7 @@ var starting_position = Vector2(180,200)
 var max_health = 3
 var health = 0
 var can_take_damage = true;
-
+var speed_dir 
 
 func _ready():
 	health = max_health
@@ -55,24 +55,24 @@ func _physics_process(delta):
 	var direction = Input.get_axis("Left", "Right")
 	if direction:
 		velocity.x = direction * SPEED
-
+		
 	#Animations
 	if (velocity.x > 1 || velocity.x < -1):
 		sprite_2d.animation = 'walking'
 	else : 
 		sprite_2d.animation = 'default'
 		
-	# Add impulse force to the kinematic body
 	
 	if applied_impulse:
 		applied_impulse_timer += delta # count the time passed from t0=0
 		velocity.y = -applied_impulse_force* SPEED + gravity * applied_impulse_timer # calcualte y velocity
-		# if velocity ~ 0, stop applying forceaaaaaa
+		print("velo with applied impulse false",velocity.y)
 		if velocity.y < 0.01:
 			applied_impulse_timer = 0
 			applied_impulse = false
 		# Flip the sprite based on the direction of movement.
 		sprite_2d.flip_h = direction < 0
+		
 	else:
 		velocity.x = move_toward(velocity.x, 0, 10)
 	
@@ -84,15 +84,21 @@ func _physics_process(delta):
 		die()
 func add_force(explosion_position : Vector2):
 	applied_impulse = true
+	var direction = (global_position.x - explosion_position.x)
+	print("direction",)
 	
-	#gwnia p th kinithoume 
-	print("Global position: ",global_position)
-	print("Explosion position: ",explosion_position)
-	var direction = (global_position - explosion_position)
-	print(direction)
-	
-	velocity.x = direction.x * SPEED/5
-	velocity.y = SPEED*direction.y/5
+	if direction < 0:
+		if SPEED > 0:
+			speed_dir = 130
+		elif SPEED < 0 :
+			speed_dir = -130
+		velocity.x = -applied_impulse_force * speed_dir 
+	elif direction > 0:
+		if SPEED > 0:
+			speed_dir = 130
+		elif SPEED < 0 :
+			speed_dir = -130
+		velocity.x = applied_impulse_force * speed_dir 
 	
 func take_damage(damage_amount : int):
 	if can_take_damage:
@@ -121,8 +127,11 @@ func downgrade_power_up():
 		boomstick_node.cooldown_power_up(0.8)
 func handle_danger() -> void:
 	print("Player died")
-	visible = false
 	can_control = false
+	$AnimationPlayer.play("Death")
+	$AnimatedSprite2D.play("Death")
+	await get_tree().create_timer(1.4).timeout
+	visible = false
 	var lvl = LevelManager.loaded_level.level_id
 	LevelManager.unload_level()
 	LevelManager.load_level(lvl)
