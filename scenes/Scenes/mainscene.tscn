@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj1at7il1eg26"]
+[gd_scene load_steps=7 format=3 uid="uid://bj1at7il1eg26"]
 
 [ext_resource type="Script" path="res://scenes/Scenes/main.gd" id="1_huio0"]
 [ext_resource type="Script" path="res://scenes/Scenes/MainMenuControl.gd" id="1_iugtq"]
@@ -13,9 +13,17 @@ level_completed = false
 level_unlocked = false
 level_path = "Scenes/level_01"
 
+[sub_resource type="Resource" id="Resource_boy85"]
+script = ExtResource("2_yl5up")
+level_id = 2
+level_name = "FinalBoss"
+level_completed = false
+level_unlocked = false
+level_path = "FinalBoss/boss_room"
+
 [node name="Main" type="Node"]
 script = ExtResource("1_huio0")
-available_levels = Array[ExtResource("2_yl5up")]([SubResource("Resource_q4d64")])
+available_levels = Array[ExtResource("2_yl5up")]([SubResource("Resource_q4d64"), SubResource("Resource_boy85")])
 
 [node name="2DScene" type="Node2D" parent="."]
 

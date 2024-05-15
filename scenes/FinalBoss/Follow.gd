@@ -15,6 +15,7 @@ func transition():
 	if owner.direction.length() < 40:
 		get_parent().change_state("Attack")
 	if owner.direction.length() > 190:
+			#get_parent().change_state("SpawnMinion")
 		var chance = randi() %2
 		match chance:
 			0:

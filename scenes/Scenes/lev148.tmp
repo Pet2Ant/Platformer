@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dt7lxw5amov3s"]
+[gd_scene load_steps=36 format=3 uid="uid://dt7lxw5amov3s"]
 
 [ext_resource type="Texture2D" uid="uid://0f04t3a54sip" path="res://tilemap test 1.png" id="1_pqhes"]
 [ext_resource type="Script" path="res://scripts/Classes/level.gd" id="1_v61l8"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://coejmhx0hhcij" path="res://scenes/Entities/android_enemy.tscn" id="20_mw63m"]
 [ext_resource type="PackedScene" uid="uid://dbhq47odoifqn" path="res://scenes/Interactables/health_up.tscn" id="21_s0hxg"]
 [ext_resource type="PackedScene" uid="uid://dtr2tupci1e3n" path="res://scenes/Interactables/Powerup.tscn" id="22_posvm"]
+[ext_resource type="PackedScene" uid="uid://b7yyeeytwrw0m" path="res://scenes/javaenemy.tscn" id="22_qv2jf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h8eod"]
 texture = ExtResource("1_pqhes")
@@ -2242,6 +2243,9 @@ position = Vector2(3938, 155)
 
 [node name="PowerUp" parent="." instance=ExtResource("22_posvm")]
 position = Vector2(207, 286)
+
+[node name="Java" parent="." instance=ExtResource("22_qv2jf")]
+position = Vector2(390, 83)
 
 [node name="AndroidEnemy" parent="." instance=ExtResource("20_mw63m")]
 position = Vector2(221, -105)

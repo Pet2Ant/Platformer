@@ -1,6 +1,9 @@
 extends CharacterBody2D
-
-@onready var player = get_parent().find_child("MainAvatar")
+@onready var main_scene = get_parent()
+@onready var scene = main_scene.find_child("2DScene")
+@onready var boss_room = scene.get_child(0)
+@onready var player = boss_room.find_child("MainAvatar")
+#@onready var boss = boss_room.find_child("Final boss")
 @onready var animation = $AnimatedSprite2D
 
 func ready():
@@ -10,8 +13,11 @@ func ready():
 	animation.play("Idle")
 	
 func _physics_process(delta):
-	var direction = player.position - position
-	velocity = direction.normalized() * 90
+	if player.can_control:
+		var direction = player.position - position
+		velocity = direction.normalized() * 90
+	else:
+		queue_free()
 	move_and_slide()
 
 func take_damage(dmg):
@@ -20,7 +26,10 @@ func take_damage(dmg):
 
 func _on_area_2d_area_entered(area):
 	if area.get_parent() is Player:
-		print("hello?")
-		area.get_parent().take_damage(1)
-		queue_free()
+			area.get_parent().take_damage(1)
+			queue_free()
+
+
+
+
 

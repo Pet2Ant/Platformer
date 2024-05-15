@@ -3,7 +3,7 @@ extends Node
 var levels: Array[LevelData]
 
 var main_scene : Node2D = null
-var loaded_level: Level = null 
+var loaded_level: Levels = null 
 func unload_level()->void:
 	if is_instance_valid(loaded_level):
 		loaded_level.queue_free()
@@ -18,11 +18,11 @@ func  load_level(level_id : int) -> void:
 	
 	
 	var level_data = get_level_data_by_id(level_id)
+
 	if not level_data:
 		return 
 
-	var level_path = "res://scenes/%s.tscn" % level_data.level_path
-
+	var level_path = "res://scenes/%s.tscn" % level_data.level_path 
 	var level_res := load(level_path)
 	if level_res:
 		loaded_level = level_res.instantiate()

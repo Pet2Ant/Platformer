@@ -27,6 +27,7 @@ var speed_dir
 func _ready():
 	health = max_health
 	GameManager.player = self
+	
 
 func _physics_process(delta):
 	if not can_control: return 
@@ -106,7 +107,7 @@ func take_damage(damage_amount : int):
 		
 		health -= damage_amount
 		
-		get_node("Healthbar2").update_healthbar(health, max_health)
+		#get_node("Healthbar2").update_healthbar(health, max_health)
 		
 		if health <= 0:
 			handle_danger()
@@ -133,8 +134,10 @@ func handle_danger() -> void:
 	var lvl = LevelManager.loaded_level.level_id
 	LevelManager.unload_level()
 	LevelManager.load_level(lvl)
+	print(LevelManager.loaded_level)
 	reset_player()
 func reset_player() -> void:
+	
 	LevelManager.loaded_level.level_start_pos.global_position = starting_position
 	global_position = starting_position
 	visible = true

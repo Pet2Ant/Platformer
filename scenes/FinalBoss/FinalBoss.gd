@@ -1,11 +1,11 @@
 extends CharacterBody2D
-
-@onready var player = owner.find_child("MainAvatar")
+class_name Boss
+@onready var player = get_parent().find_child("MainAvatar")
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var progress_bar = $UI/ProgressBar
 @onready var attack = $Hit/HitCollision
 var direction : Vector2
-var health:= 25:
+var health:= 3:
 	set(value):
 		health = value
 		progress_bar.value = value
@@ -25,9 +25,9 @@ func _process(_delta):
 		
 func _physics_process(delta):
 	if health >= 13:
-		velocity = direction.normalized()*130
+		velocity = direction.normalized()*70
 	else:
-		velocity = direction.normalized()*200
+		velocity = direction.normalized()*120
 	move_and_collide(velocity*delta)
 func take_damage(damage):
 	health -= damage
