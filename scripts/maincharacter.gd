@@ -24,7 +24,8 @@ var max_health = 3
 var health = 0
 var can_take_damage = true;
 var speed_dir 
-
+var friction = 0.75
+var stop_friction = 5*friction
 func _ready():
 	health = max_health
 	GameManager.player = self
@@ -39,8 +40,18 @@ func _physics_process(delta):
 	else:
 		coyote_timer = 0.0
 	
-	  
-
+	var input_vector: Vector2 = Vector2.ZERO
+	# Handle input.
+	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_vector = input_vector.normalized()
+	
+	if input_vector.x != 0:
+		velocity.x = lerp(velocity.x, input_vector.x * SPEED, friction * delta)
+	else:
+		velocity.x = lerp(velocity.x, 0.0, stop_friction * delta)
+		
+		
+		
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or coyote_timer < COYOTE_TIME) :
 		velocity.y = JUMP_VELOCITY
