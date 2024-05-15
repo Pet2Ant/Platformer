@@ -7,6 +7,7 @@ func ready():
 func _on_area_2d_body_entered(body):
 	if (body.name == "MainAvatar"):
 		body.can_control = false
+		body.animation_player.play("win")
 		animation_player.play("DegreeGet")
 		await animation_player.animation_finished
 		animation_player.play("AcadProb")

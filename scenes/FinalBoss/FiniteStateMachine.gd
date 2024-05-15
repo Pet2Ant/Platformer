@@ -14,5 +14,6 @@ func change_state(state):
 	
 	previous_state.exit()
 	previous_state = current_state
-
+func get_state() -> State:
+	return current_state
 

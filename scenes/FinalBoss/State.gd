@@ -5,13 +5,12 @@ extends Node2D
 @onready var debug = owner.find_child("debug")
 @onready var player = owner.get_parent().find_child("MainAvatar")
 @onready var animation_player = owner.find_child("AnimationPlayer")
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	set_physics_process(false)
 	
 func enter():
 	set_physics_process(true)
-	
+
 func exit():
 	set_physics_process(false)
 	

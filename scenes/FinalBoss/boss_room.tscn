@@ -210,7 +210,7 @@ script = ExtResource("1_8keqg")
 level_id = 2
 level_start_pos = NodePath("start pos")
 
-[node name="Final boss" parent="." instance=ExtResource("2_6s2vi")]
+[node name="FinalBoss" parent="." instance=ExtResource("2_6s2vi")]
 position = Vector2(383, 189)
 collision_mask = 0
 
@@ -229,7 +229,7 @@ texture = ExtResource("4_pbsx0")
 [node name="MainAvatar" parent="." instance=ExtResource("5_84eil")]
 position = Vector2(136, 208)
 
-[node name="Camera2D" type="Camera2D" parent="MainAvatar"]
+[node name="Camera2D2" type="Camera2D" parent="MainAvatar"]
 
 [node name="start pos" type="Node2D" parent="."]
 position = Vector2(211, 83)

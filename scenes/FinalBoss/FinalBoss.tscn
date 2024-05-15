@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://byo7ivco7f3d2"]
+[gd_scene load_steps=82 format=3 uid="uid://byo7ivco7f3d2"]
 
 [ext_resource type="Script" path="res://scenes/FinalBoss/FinalBoss.gd" id="1_11gyq"]
 [ext_resource type="Texture2D" uid="uid://dhc11rfgd75wg" path="res://athtech_assets/Undead executioner puppet/png/attacking.png" id="1_x8364"]
@@ -15,9 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://bvavrqhdunot1" path="res://scenes/FinalBoss/minion.tscn" id="13_ll4ik"]
 [ext_resource type="Script" path="res://scenes/FinalBoss/Death.gd" id="14_8oa46"]
 [ext_resource type="PackedScene" uid="uid://cmmffkyw7i6em" path="res://scenes/FinalBoss/FinalDegree.tscn" id="15_a2q05"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_idkw3"]
-size = Vector2(90, 74.5139)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vnsfy"]
 atlas = ExtResource("2_s818t")
@@ -471,8 +468,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_j8r3k"]
 resource_name = "attack_1"
-length = 0.750013
-step = 0.125
+length = 0.4
+step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -492,16 +489,16 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.075, 0.175, 0.275, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"values": [0, 1, 2, 3, 4]
 }
 
 [sub_resource type="Animation" id="Animation_lrt51"]
 resource_name = "attack_2"
-length = 0.875013
-step = 0.125
+length = 0.5
+step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -521,7 +518,7 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75),
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
@@ -530,6 +527,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_gr1bj"]
 resource_name = "boss_slained"
 length = 2.0
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -554,6 +552,20 @@ tracks/1/keys = {
 "values": [{
 "args": [],
 "method": &"queue_free"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FiniteStateMachine/Death")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.95),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
 }]
 }
 
@@ -632,7 +644,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_tuh3g"]
 resource_name = "skill"
-length = 1.50001
+length = 1.4
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -653,10 +665,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -665,7 +677,7 @@ tracks/2/path = NodePath("FiniteStateMachine/Teleport")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.25),
+"times": PackedFloat32Array(1.375),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -735,17 +747,10 @@ height = 58.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpx0q"]
 size = Vector2(200, 200)
 
-[node name="Final boss" type="CharacterBody2D"]
+[node name="FinalBoss" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_11gyq")
-
-[node name="Hit" type="Area2D" parent="."]
-position = Vector2(-22, -32)
-
-[node name="HitCollision" type="CollisionShape2D" parent="Hit"]
-position = Vector2(22, 32.257)
-shape = SubResource("RectangleShape2D_idkw3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jjaer")
@@ -785,7 +790,7 @@ offset_top = -27.0
 offset_right = 100.0
 grow_horizontal = 2
 grow_vertical = 0
-max_value = 25.0
+max_value = 3.0
 value = 3.0
 
 [node name="Label" type="Label" parent="UI/ProgressBar"]
@@ -854,5 +859,4 @@ minion_node = ExtResource("13_ll4ik")
 script = ExtResource("14_8oa46")
 degree_node = ExtResource("15_a2q05")
 
-[connection signal="area_entered" from="Hit" to="FiniteStateMachine/Attack" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]

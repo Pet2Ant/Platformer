@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var scene = main_scene.find_child("2DScene")
 @onready var boss_room = scene.get_child(0)
 @onready var player = boss_room.find_child("MainAvatar")
-#@onready var boss = boss_room.find_child("Final boss")
+@onready var boss = boss_room.find_child("FinalBoss")
 @onready var animation = $AnimatedSprite2D
 
 func ready():
@@ -18,11 +18,12 @@ func _physics_process(delta):
 		velocity = direction.normalized() * 90
 	else:
 		queue_free()
-	move_and_slide()
+	if boss.find_child("FiniteStateMachine").get_state() == boss.find_child("FiniteStateMachine").find_child("Death"):
+		queue_free()
+	move_and_collide(velocity*delta)
 
 func take_damage(dmg):
 	queue_free()
-
 
 func _on_area_2d_area_entered(area):
 	if area.get_parent() is Player:

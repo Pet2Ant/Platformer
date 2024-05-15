@@ -18,6 +18,7 @@ var can_control : bool = true
 var force_timer = 0.0
 var force_duration = 0.5  
 @onready var sprite_2d = $AnimatedSprite2D
+@onready var animation_player =$AnimationPlayer
 var starting_position = Vector2(180,200)
 var max_health = 3
 var health = 0
@@ -107,7 +108,7 @@ func take_damage(damage_amount : int):
 		
 		health -= damage_amount
 		
-		#get_node("Healthbar2").update_healthbar(health, max_health)
+		get_node("Healthbar2").update_healthbar(health, max_health)
 		
 		if health <= 0:
 			handle_danger()

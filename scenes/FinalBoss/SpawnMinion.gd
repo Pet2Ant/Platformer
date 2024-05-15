@@ -6,10 +6,10 @@ func enter():
 	super.enter()
 	animation_player.play("summon")
 	await animation_player.animation_finished
-	can_transition = true 
-
+	
 
 func spawn():
+	can_transition = true 
 	var minion = minion_node.instantiate()
 	minion.position = owner.position + Vector2(40,-40)
 	get_tree().current_scene.add_child(minion)
