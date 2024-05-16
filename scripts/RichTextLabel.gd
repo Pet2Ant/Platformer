@@ -17,16 +17,18 @@ func scroll_text(input_text:String) -> void:
 	text_direction = Control.TEXT_DIRECTION_LTR
 	
 	custom_minimum_size = Vector2(600,200)
-	for i in inputText:
-		count += 1
+	#for i in inputText:
+		#count += 1
 		#print(count)
 	#print(LevelManager.loaded_level)
 	for i in get_parsed_text():
-		visible_characters += 3
+		visible_characters += 100
 		await get_tree().create_timer(0.1).timeout
+		count += 1 
+		print(count)
 		transition(count)
 	 
 #
 func transition(count):
-	if count == 606:
+	if count == 606/100:
 		GameManager.load_world()

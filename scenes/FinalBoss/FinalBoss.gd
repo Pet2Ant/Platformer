@@ -26,9 +26,11 @@ func _process(_delta):
 		
 func _physics_process(delta):
 	if health >= 13:
-		velocity = direction.normalized()*70
+		velocity = direction.normalized()*240
+	elif health >= 5:
+		velocity = direction.normalized()*270
 	else:
-		velocity = direction.normalized()*120
+		velocity = direction.normalized()*360
 	move_and_collide(velocity*delta)
 func take_damage(damage):
 	health -= damage

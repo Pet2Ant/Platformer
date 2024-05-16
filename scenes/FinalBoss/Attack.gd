@@ -11,11 +11,10 @@ func combo():
 	var move_set = ["1","1","2"]
 	for i in move_set:
 		await attack(i)
-		get_parent().get_parent().get_parent().find_child("MainAvatar").take_damage(1)
-	
 	combo()
 
-
+func damage():
+	get_parent().get_parent().get_parent().find_child("MainAvatar").take_damage(1)
 
 func transition():
 	if owner.direction.length() >40 :
