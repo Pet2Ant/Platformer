@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dijylos1psiy1"]
+[gd_scene load_steps=30 format=3 uid="uid://dijylos1psiy1"]
 
 [ext_resource type="Script" path="res://scripts/Classes/level.gd" id="1_jks6n"]
 [ext_resource type="Texture2D" uid="uid://vwnviktslndx" path="res://athtech_assets/tiles/claimtable.png" id="2_4atdq"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bi13am72uaex" path="res://scenes/falling_spikes.tscn" id="16_u62f7"]
 [ext_resource type="PackedScene" uid="uid://d0avc2kwvncap" path="res://scenes/Interactables/coins.tscn" id="17_8v4br"]
 [ext_resource type="Texture2D" uid="uid://dnp6pll32iw5c" path="res://athtech_assets/Undead executioner puppet/png/boss1.png" id="19_5gob8"]
+[ext_resource type="AudioStream" uid="uid://byqwgaevoxwia" path="res://Sounds/main_theme2.mp3" id="20_b480m"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_rbjdo"]
 tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 1, 65536, 0, 65537, 65536, 1, 131073, 65536, 2, 2, 131072, 0, 65538, 131072, 1, 131074, 131072, 2)
@@ -202,7 +203,7 @@ layer_0/tile_data = PackedInt32Array(1376246, 65536, 1, 1376245, 65536, 1, 13762
 position = Vector2(240, 283)
 
 [node name="MainAvatar" parent="." instance=ExtResource("4_athbc")]
-position = Vector2(170, 336)
+position = Vector2(106, 334)
 collision_layer = 11
 collision_mask = 7
 floor_snap_length = 6.0
@@ -432,7 +433,7 @@ position = Vector2(1553, -372)
 position = Vector2(694, 342)
 
 [node name="AndroidEnemy2" parent="EnemyHolder" instance=ExtResource("14_v81ki")]
-position = Vector2(1256, 342)
+position = Vector2(1385, 341)
 
 [node name="AndroidEnemy4" parent="EnemyHolder" instance=ExtResource("14_v81ki")]
 position = Vector2(1411, -314)
@@ -444,7 +445,7 @@ position = Vector2(1001, -298)
 position = Vector2(1787, -314)
 
 [node name="AndroidEnemy3" parent="EnemyHolder" instance=ExtResource("14_v81ki")]
-position = Vector2(1628, 341)
+position = Vector2(1806, 342)
 
 [node name="AndroidEnemy7" parent="EnemyHolder" instance=ExtResource("14_v81ki")]
 position = Vector2(2200, 342)
@@ -999,16 +1000,16 @@ position = Vector2(3736, -353)
 position = Vector2(3753, -353)
 
 [node name="Coins89" parent="CoinsHolder" instance=ExtResource("17_8v4br")]
-position = Vector2(3912, -473)
+position = Vector2(3925, -473)
 
 [node name="Coins90" parent="CoinsHolder" instance=ExtResource("17_8v4br")]
-position = Vector2(3929, -473)
+position = Vector2(3925, -457)
 
 [node name="Coins91" parent="CoinsHolder" instance=ExtResource("17_8v4br")]
-position = Vector2(3912, -457)
+position = Vector2(3910, -457)
 
 [node name="Coins92" parent="CoinsHolder" instance=ExtResource("17_8v4br")]
-position = Vector2(3929, -457)
+position = Vector2(3910, -473)
 
 [node name="Coins64" parent="CoinsHolder" instance=ExtResource("17_8v4br")]
 position = Vector2(3702, 312)
@@ -1159,7 +1160,8 @@ alignment = 1
 [node name="Restart" type="Button" parent="UIManager2/PauseMenu/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
-text = "Main Menu"
+text = "Main Menu
+"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="UIManager2/PauseMenu/VBoxContainer"]
 layout_mode = 2
@@ -1242,6 +1244,11 @@ offset_top = 83.0
 offset_right = 233.0
 offset_bottom = 114.0
 text = "Next Level"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_b480m")
+volume_db = -15.928
+autoplay = true
 
 [connection signal="pressed" from="UIManager2/PauseMenu/VBoxContainer/HBoxContainer/Resume" to="UIManager2" method="_on_resume_pressed"]
 [connection signal="pressed" from="UIManager2/PauseMenu/VBoxContainer/HBoxContainer2/Restart" to="UIManager2" method="_on_restart_pressed"]

@@ -81,6 +81,7 @@ func flip():
 func take_damage(damage_amount):
 	if !dead:
 		health -= damage_amount
+		find_child("Healthbar").update_healthbar(health, max_health)
 		$AnimationPlayer.play("onhit")
 		if health <= 0:
 			die()
@@ -89,7 +90,6 @@ func die():
 		dead = true
 		speed = 0
 		GameManager.gain_score(100)
-		find_child("Healthbar").update_healthbar(health, max_health)
 		$AnimationPlayer.play("Die")
 		await get_tree().create_timer(0.7).timeout
 		queue_free()
