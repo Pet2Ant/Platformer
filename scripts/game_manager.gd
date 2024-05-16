@@ -81,8 +81,8 @@ func restart():
 func load_world():
 	get_tree().paused = false
 	set_process_input(true)  
-	var lvl = 2
-	#get_tree().change_scene_to_file("res://scenes/FinalBoss/boss_room.tscn")
+	var lvl = LevelManager.levelId + 1
+	print("LEVEL",lvl)
 	LevelManager.unload_level()
 	LevelManager.load_level(lvl)
 	

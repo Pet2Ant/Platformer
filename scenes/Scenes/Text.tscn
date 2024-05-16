@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdqemf3e72le7"]
+[gd_scene load_steps=3 format=3 uid="uid://cdqemf3e72le7"]
 
 [ext_resource type="Script" path="res://scripts/RichTextLabel.gd" id="1_4lr8d"]
-[ext_resource type="Script" path="res://scripts/Label.gd" id="2_x6jri"]
 [ext_resource type="Texture2D" uid="uid://b4e7cepel55wj" path="res://athtech_assets/background/modern-white-background-free-vector.jpg" id="3_nlg8u"]
 
-[node name="Control" type="Control"]
+[node name="TextScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,13 +23,6 @@ bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
 script = ExtResource("1_4lr8d")
-
-[node name="Label" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("2_x6jri")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1

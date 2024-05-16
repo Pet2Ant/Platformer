@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp153g5l22o4c"]
+[gd_scene load_steps=6 format=3 uid="uid://cp153g5l22o4c"]
 
-[ext_resource type="Texture2D" uid="uid://bv8misya2fi3d" path="res://finalDay.PNG" id="1_7bntd"]
 [ext_resource type="Texture2D" uid="uid://7exmskm6yh6p" path="res://desert_tileset_testing.png" id="2_dcpaf"]
-[ext_resource type="PackedScene" uid="uid://b62kr51eb8x8u" path="res://scenes/Entities/maincharacter.tscn" id="3_4fv7c"]
+[ext_resource type="PackedScene" uid="uid://dpb3nj6qe5pwu" path="res://scenes/FinalBoss/MainAvatar.tscn" id="3_4fv7c"]
 [ext_resource type="Texture2D" uid="uid://ssfu1yoswy2b" path="res://Godotgraphs/robot_player-Sheet.png" id="4_frcex"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ci087"]
@@ -166,86 +165,6 @@ sources/2 = SubResource("TileSetAtlasSource_ci087")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="FinalDay" type="Sprite2D" parent="."]
-position = Vector2(112, 184)
-scale = Vector2(1.84821, 1.84821)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay/FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay/FinalDay/FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay/FinalDay/FinalDay/FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay"]
-position = Vector2(428.522, 3.99351e-06)
-scale = Vector2(1.00317, 1.00317)
-texture = ExtResource("1_7bntd")
-
-[node name="FinalDay" type="Sprite2D" parent="FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay/FinalDay"]
-position = Vector2(-6268.81, -2.21729e-05)
-scale = Vector2(0.95939, 0.95939)
-texture = ExtResource("1_7bntd")
-
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
 tile_set = SubResource("TileSet_rf0tw")
@@ -255,7 +174,7 @@ layer_0/tile_data = PackedInt32Array(1245185, 65538, 0, 1245186, 65538, 0, 12451
 [node name="MainAvatar" parent="." instance=ExtResource("3_4fv7c")]
 position = Vector2(643, 288)
 
-[node name="Camera2D" type="Camera2D" parent="MainAvatar"]
+[node name="Camera2D2" type="Camera2D" parent="MainAvatar"]
 position = Vector2(-1, 5)
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 10.0
