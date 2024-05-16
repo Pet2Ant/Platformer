@@ -5,7 +5,7 @@ class_name Boss
 @onready var progress_bar = $UI/ProgressBar
 @onready var attack = $Hit/HitCollision
 var direction : Vector2
-var health:= 3:
+var health:= 25:
 	set(value):
 		health = value
 		progress_bar.value = value
@@ -27,9 +27,15 @@ func _process(_delta):
 func _physics_process(delta):
 	if health >= 13:
 		velocity = direction.normalized()*240
+		if $AnimationPlayer.speed_scale == 1:
+			$AnimationPlayer.speed_scale += 0.5
 	elif health >= 5:
+		if $AnimationPlayer.speed_scale == 1.5:
+			$AnimationPlayer.speed_scale += 0.5
 		velocity = direction.normalized()*270
 	else:
+		if $AnimationPlayer.speed_scale == 2:
+			$AnimationPlayer.speed_scale += 0.2
 		velocity = direction.normalized()*360
 	move_and_collide(velocity*delta)
 func take_damage(damage):

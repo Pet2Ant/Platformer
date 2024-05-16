@@ -6,7 +6,7 @@
 
 [node name="FinalScene" type="Node2D" node_paths=PackedStringArray("level_start_pos")]
 script = ExtResource("1_s4826")
-level_id = 4
+level_id = 5
 level_start_pos = NodePath(".")
 
 [node name="FinalText" type="Control" parent="."]

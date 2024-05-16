@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bj1at7il1eg26"]
+[gd_scene load_steps=11 format=3 uid="uid://bj1at7il1eg26"]
 
 [ext_resource type="Script" path="res://scenes/Scenes/main.gd" id="1_huio0"]
 [ext_resource type="Script" path="res://scenes/Scenes/MainMenuControl.gd" id="1_iugtq"]
@@ -23,7 +23,7 @@ level_path = "Scenes/level_01"
 
 [sub_resource type="Resource" id="Resource_gt5sh"]
 script = ExtResource("2_yl5up")
-level_id = 2
+level_id = 4
 level_name = "FinalBoss"
 level_completed = false
 level_unlocked = false
@@ -31,15 +31,31 @@ level_path = "FinalBoss/boss_room"
 
 [sub_resource type="Resource" id="Resource_w1com"]
 script = ExtResource("2_yl5up")
-level_id = 3
+level_id = 5
 level_name = "FinalScene"
 level_completed = false
 level_unlocked = false
 level_path = "Scenes/final_scene"
 
+[sub_resource type="Resource" id="Resource_ctupx"]
+script = ExtResource("2_yl5up")
+level_id = 2
+level_name = "The Second Level"
+level_completed = false
+level_unlocked = false
+level_path = "desertLevel"
+
+[sub_resource type="Resource" id="Resource_mlu4l"]
+script = ExtResource("2_yl5up")
+level_id = 3
+level_name = "Clean City"
+level_completed = false
+level_unlocked = false
+level_path = "clean_city_level"
+
 [node name="Main" type="Node"]
 script = ExtResource("1_huio0")
-available_levels = Array[ExtResource("2_yl5up")]([SubResource("Resource_q4d64"), SubResource("Resource_boy85"), SubResource("Resource_gt5sh"), SubResource("Resource_w1com")])
+available_levels = Array[ExtResource("2_yl5up")]([SubResource("Resource_q4d64"), SubResource("Resource_boy85"), SubResource("Resource_gt5sh"), SubResource("Resource_w1com"), SubResource("Resource_ctupx"), SubResource("Resource_mlu4l")])
 
 [node name="2DScene" type="Node2D" parent="."]
 

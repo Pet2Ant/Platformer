@@ -1932,7 +1932,7 @@ sources/10 = SubResource("TileSetAtlasSource_11p6n")
 [node name="BossRoom" type="Node2D" node_paths=PackedStringArray("level_start_pos")]
 position = Vector2(130, -1)
 script = ExtResource("1_8keqg")
-level_id = 2
+level_id = 4
 level_start_pos = NodePath("start pos")
 
 [node name="FinalBoss" parent="." instance=ExtResource("2_6s2vi")]
