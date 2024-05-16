@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://coejmhx0hhcij"]
+[gd_scene load_steps=18 format=3 uid="uid://coejmhx0hhcij"]
 
 [ext_resource type="Script" path="res://scenes/Entities/Android.gd" id="1_bjqn4"]
 [ext_resource type="Texture2D" uid="uid://barv6btxmys5d" path="res://athtech_assets/enemies/android_sword2.png" id="1_qkht2"]
+[ext_resource type="PackedScene" uid="uid://bqv2gw7sx0fwf" path="res://scenes/healthbar.tscn" id="2_b7h86"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_igtik"]
 height = 28.0
@@ -134,6 +135,12 @@ _data = {
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_bjqn4")
+
+[node name="Healthbar" parent="." instance=ExtResource("2_b7h86")]
+offset_left = -11.0
+offset_top = -22.0
+offset_right = -11.0
+offset_bottom = -22.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_igtik")

@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://b7m6nviqo3ous" path="res://athtech_assets/background/Jungle/1.Backround.png" id="21_w05eu"]
 [ext_resource type="Texture2D" uid="uid://cowcshaxl7eh5" path="res://athtech_assets/background/Jungle/green.png" id="22_0mwna"]
 [ext_resource type="Texture2D" uid="uid://dhpyggtpaujnx" path="res://athtech_assets/background/Jungle/2.Trees_back.png" id="22_lw4ps"]
-[ext_resource type="PackedScene" uid="uid://dtr2tupci1e3n" path="res://scenes/Interactables/Powerup.tscn" id="22_posvm"]
 [ext_resource type="Texture2D" uid="uid://t77jweonx48e" path="res://athtech_assets/background/Jungle/3.Trees_front.png" id="23_xroaa"]
 [ext_resource type="Texture2D" uid="uid://c4fe5xmxygcgn" path="res://athtech_assets/background/Jungle/4.Ground.png" id="24_85700"]
 [ext_resource type="PackedScene" uid="uid://bi13am72uaex" path="res://scenes/falling_spikes.tscn" id="25_muv6x"]
@@ -1875,7 +1874,7 @@ position = Vector2(4802, 270)
 position = Vector2(3601, 227)
 
 [node name="MainAvatar" parent="." instance=ExtResource("9_wqeiw")]
-position = Vector2(122, 281)
+position = Vector2(185, 289)
 collision_layer = 11
 collision_mask = 7
 floor_snap_length = 6.0
@@ -2163,7 +2162,7 @@ position = Vector2(5598, 124)
 position = Vector2(5457, 214)
 
 [node name="Coins38" parent="CoinHolder" instance=ExtResource("16_ps4r3")]
-position = Vector2(5776, 183)
+position = Vector2(5787, 177)
 
 [node name="Coins25" parent="CoinHolder" instance=ExtResource("16_ps4r3")]
 position = Vector2(4153, -218)
@@ -2237,10 +2236,11 @@ script = ExtResource("16_f8qpf")
 [node name="ScoreDisplay" type="Label" parent="UIManager"]
 anchors_preset = -1
 anchor_top = 0.125
-anchor_right = 0.1
-anchor_bottom = 0.185
+anchor_right = 0.069
+anchor_bottom = 0.182
 offset_top = 1.0
-offset_right = -19.8
+offset_right = -0.952003
+offset_bottom = 1.2
 text = "Score: 0"
 
 [node name="CoinIcon" type="TextureRect" parent="UIManager"]
@@ -2300,16 +2300,7 @@ alignment = 1
 [node name="Restart" type="Button" parent="UIManager/PauseMenu/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
-text = "Restart"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="UIManager/PauseMenu/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="WorldMap" type="Button" parent="UIManager/PauseMenu/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(50, 30)
-layout_mode = 2
-text = "World Map"
+text = "Main Menu"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="UIManager/PauseMenu/VBoxContainer"]
 layout_mode = 2
@@ -2413,9 +2404,6 @@ position = Vector2(3039, 172)
 
 [node name="HealthUp7" parent="HealthUpHolder" instance=ExtResource("21_s0hxg")]
 position = Vector2(4347, 355)
-
-[node name="PowerUp" parent="." instance=ExtResource("22_posvm")]
-position = Vector2(367, 261)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -2571,7 +2559,6 @@ autoplay = true
 [connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer/Resume" to="UIManager" method="_on_resume_pressed"]
 [connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer2/Restart" to="UIManager" method="_on_restart_pressed"]
-[connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer3/WorldMap" to="UIManager" method="_on_world_map_pressed"]
 [connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer4/Quit" to="UIManager" method="_on_quit_pressed"]
 [connection signal="pressed" from="UIManager/WinScreen/Restart" to="UIManager" method="_on_restart_pressed"]
 [connection signal="pressed" from="UIManager/WinScreen/FinishLevel" to="UIManager" method="_on_finish_level_pressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ch6ln8e6pbh7m"]
+[gd_scene load_steps=11 format=3 uid="uid://ch6ln8e6pbh7m"]
 
 [ext_resource type="Script" path="res://scenes/Entities/Prolog.gd" id="1_06vfi"]
 [ext_resource type="Texture2D" uid="uid://be75kpnn31p5l" path="res://Godotgraphs/prolog.png" id="1_ypgnd"]
+[ext_resource type="PackedScene" uid="uid://bqv2gw7sx0fwf" path="res://scenes/healthbar.tscn" id="2_pejwy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vygl2"]
 radius = 16.0
@@ -120,6 +121,12 @@ length = 17.0
 [node name="PrologEnemy" type="CharacterBody2D" groups=["Enemies"]]
 motion_mode = 1
 script = ExtResource("1_06vfi")
+
+[node name="Healthbar" parent="." instance=ExtResource("2_pejwy")]
+offset_left = -12.0
+offset_top = -39.0
+offset_right = -12.0
+offset_bottom = -39.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2.48241)

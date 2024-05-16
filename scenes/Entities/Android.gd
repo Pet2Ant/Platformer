@@ -88,6 +88,8 @@ func die():
 	if not dead:
 		dead = true
 		speed = 0
+		GameManager.gain_score(100)
+		find_child("Healthbar").update_healthbar(health, max_health)
 		$AnimationPlayer.play("Die")
 		await get_tree().create_timer(0.7).timeout
 		queue_free()

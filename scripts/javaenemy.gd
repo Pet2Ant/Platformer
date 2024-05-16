@@ -35,6 +35,7 @@ func fire():
 func take_damage(damage_amount):
 	if !dead:
 		health = health - damage_amount
+		find_child("Healthbar").update_healthbar(health, max_health)
 		$AnimationPlayer.play("onhit")
 		if health <= 0:
 			die()
@@ -42,6 +43,7 @@ func die():
 	if not dead:
 		dead = true
 		shooting = false
+		GameManager.gain_score(100)
 		$AnimationPlayer.play("Die")
 		await get_tree().create_timer(0.5).timeout
 		queue_free()

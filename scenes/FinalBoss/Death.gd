@@ -3,6 +3,7 @@ extends State
 
 func enter():
 	super.enter()
+	GameManager.gain_score(500)
 	animation_player.play("death")
 	await animation_player.animation_finished
 	
