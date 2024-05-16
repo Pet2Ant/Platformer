@@ -1877,18 +1877,18 @@ position = Vector2(4802, 270)
 position = Vector2(3601, 227)
 
 [node name="MainAvatar" parent="." instance=ExtResource("9_wqeiw")]
-position = Vector2(5751, 175)
+position = Vector2(50, 288)
 collision_layer = 11
 collision_mask = 7
 floor_snap_length = 6.0
 
-[node name="Healthbar2" parent="MainAvatar" instance=ExtResource("13_7nde5")]
+[node name="Healthbar3" parent="MainAvatar" instance=ExtResource("13_7nde5")]
 offset_left = -13.0
 offset_top = -21.0
 offset_right = -13.0
 offset_bottom = -21.0
 
-[node name="Camera2D" type="Camera2D" parent="MainAvatar"]
+[node name="Camera2D2" type="Camera2D" parent="MainAvatar"]
 position = Vector2(1, 1)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0

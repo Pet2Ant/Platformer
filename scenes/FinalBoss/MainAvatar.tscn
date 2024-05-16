@@ -1,13 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://dpb3nj6qe5pwu"]
+[gd_scene load_steps=30 format=3 uid="uid://dpb3nj6qe5pwu"]
 
 [ext_resource type="Script" path="res://scripts/maincharacter.gd" id="1_8jnyu"]
 [ext_resource type="Texture2D" uid="uid://jyg53gnkvtbg" path="res://athtech_assets/main character/robot player-Sheet.png" id="3_nmt3h"]
 [ext_resource type="Texture2D" uid="uid://dc1euwnwws3sb" path="res://athtech_assets/main character/walk  anim.png" id="4_ucx5j"]
 [ext_resource type="PackedScene" uid="uid://ckmo3yxf4jdq5" path="res://scenes/Entities/boomstick.tscn" id="4_uysf1"]
-[ext_resource type="AudioStream" uid="uid://bgg0a1p7h6mcp" path="res://Sounds/damage_taken.mp3" id="5_s4o8d"]
-[ext_resource type="AudioStream" uid="uid://0fhh5eoikdnk" path="res://Sounds/death.mp3" id="6_pjogn"]
 [ext_resource type="PackedScene" uid="uid://bqv2gw7sx0fwf" path="res://scenes/healthbar.tscn" id="5_cyg01"]
+[ext_resource type="AudioStream" uid="uid://bgg0a1p7h6mcp" path="res://Sounds/damage_taken.mp3" id="5_s4o8d"]
 [ext_resource type="Texture2D" uid="uid://cirp2y7yibg5i" path="res://athtech_assets/main character/hands_up.png" id="5_yv55i"]
+[ext_resource type="AudioStream" uid="uid://0fhh5eoikdnk" path="res://Sounds/death.mp3" id="6_pjogn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4054"]
 size = Vector2(20, 21)
@@ -256,6 +256,7 @@ bus = &"Damage"
 stream = ExtResource("6_pjogn")
 mix_target = 1
 bus = &"death"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, 1)
 position_smoothing_speed = 10.0
