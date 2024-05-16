@@ -1087,6 +1087,7 @@ position = Vector2(3509, -164)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3842, -468)
 sprite_frames = SubResource("SpriteFrames_h5cbe")
+autoplay = "default"
 frame_progress = 0.264912
 
 [node name="UIManager2" type="CanvasLayer" parent="."]
