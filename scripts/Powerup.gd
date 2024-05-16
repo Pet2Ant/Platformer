@@ -11,3 +11,11 @@ func _on_body_entered(body):
 		queue_free()
 		game_manager.power_up(power,body)
 		
+
+
+
+#
+#func _on_area_entered(area):
+	#if area.get_parent() is Player:
+		#queue_free()
+		#game_manager.power_up(power,area.get_parent())

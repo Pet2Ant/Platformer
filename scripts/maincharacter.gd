@@ -20,6 +20,7 @@ var force_duration = 0.5
 var friction = 0.75
 var stop_friction = 5*friction
 @onready var sprite_2d = $AnimatedSprite2D
+@onready var animation_player = $AnimationPlayer
 var starting_position = Vector2(180,200)
 var max_health = 3
 var health = 0
@@ -51,13 +52,13 @@ func _physics_process(delta):
   
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or coyote_timer < COYOTE_TIME) :
+	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or coyote_timer < COYOTE_TIME)and !applied_impulse :
 		velocity.y = JUMP_VELOCITY
 		is_jumping = true
 	elif  Input.is_action_just_pressed("ui_accept") and is_jumping:
 		velocity.y = JUMP_VELOCITY
 
-	if is_jumping and Input.is_action_just_pressed("ui_accept") and jump_timer <jump_time :
+	if is_jumping and Input.is_action_just_pressed("ui_accept") and jump_timer <jump_time and !applied_impulse :
 		jump_timer += delta
 	else:
 		is_jumping  = false
