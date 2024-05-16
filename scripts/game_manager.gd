@@ -14,6 +14,7 @@ var starting_pos = Vector2(180,200)
 var power_up_duration = 30.0
 var paused = false
 var playerNode : Node2D
+
 func add_point() :
 	points += 1
 	print("Points: ", points);
@@ -24,8 +25,10 @@ func remove_points() -> void :
 func remove_score() -> void : 
 	score = 0
 	return
+	
 func return_points() -> int:
 	return points
+	
 func respawn_player():
 	if player.health == 0:
 		print("????")

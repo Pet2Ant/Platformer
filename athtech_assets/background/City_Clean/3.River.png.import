@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://28v8wu8jkqrd"
-path="res://.godot/imported/Vdeligma.png-f5e5b6863ec39c905b527b790a3c06a1.ctex"
+uid="uid://c72ds8r3e8acv"
+path="res://.godot/imported/3.River.png-acefc9d6747956ec453438492e1cfbf9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Vdeligma.png"
-dest_files=["res://.godot/imported/Vdeligma.png-f5e5b6863ec39c905b527b790a3c06a1.ctex"]
+source_file="res://athtech_assets/background/City_Clean/3.River.png"
+dest_files=["res://.godot/imported/3.River.png-acefc9d6747956ec453438492e1cfbf9.ctex"]
 
 [params]
 

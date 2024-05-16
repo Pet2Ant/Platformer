@@ -16,6 +16,11 @@ func _process(_delta):
 func update_coin_display(gained_coins):
 	$CoinDisplay.text = str(GameManager.coins)
 	$WinScreen/CoinDisplay.text = str(GameManager.coins)
+	
+func update_score_display(gained_score):
+	$ScoreDisplay.text = "Score: " + str(GameManager.score)
+	
+
 
 func _on_resume_pressed():
 	GameManager.resume()

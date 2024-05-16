@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dt7lxw5amov3s"]
+[gd_scene load_steps=42 format=3 uid="uid://ch4eoi5u38u0k"]
 
 [ext_resource type="Texture2D" uid="uid://0f04t3a54sip" path="res://tilemap test 1.png" id="1_pqhes"]
 [ext_resource type="Script" path="res://scripts/Classes/level.gd" id="1_v61l8"]
@@ -2101,7 +2101,8 @@ position = Vector2(5842, 173)
 win_condition = true
 
 [node name="Checkpoint5" parent="CheckpointHolder" instance=ExtResource("15_p6dng")]
-position = Vector2(259, 279)
+visible = false
+position = Vector2(242, 82)
 win_condition = true
 
 [node name="Checkpoint2" parent="CheckpointHolder" instance=ExtResource("15_p6dng")]
@@ -2232,6 +2233,15 @@ position = Vector2(1067, 354)
 [node name="UIManager" type="CanvasLayer" parent="."]
 process_mode = 3
 script = ExtResource("16_f8qpf")
+
+[node name="ScoreDisplay" type="Label" parent="UIManager"]
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.1
+anchor_bottom = 0.185
+offset_top = 1.0
+offset_right = -19.8
+text = "Score: 0"
 
 [node name="CoinIcon" type="TextureRect" parent="UIManager"]
 offset_left = 15.0
@@ -2372,7 +2382,7 @@ offset_left = 5.0
 offset_top = 84.0
 offset_right = 114.0
 offset_bottom = 115.0
-text = "Restart Level"
+text = "Menu Screen "
 
 [node name="FinishLevel" type="Button" parent="UIManager/WinScreen"]
 custom_minimum_size = Vector2(50, 30)
@@ -2381,7 +2391,7 @@ offset_left = 124.0
 offset_top = 83.0
 offset_right = 233.0
 offset_bottom = 114.0
-text = "Go to World"
+text = "Next Level"
 
 [node name="HealthUpHolder" type="Node2D" parent="."]
 position = Vector2(-51, -26)
@@ -2408,7 +2418,6 @@ position = Vector2(4347, 355)
 position = Vector2(367, 261)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.7, 0.7)

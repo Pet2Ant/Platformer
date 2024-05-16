@@ -92,7 +92,7 @@ func _physics_process(delta):
 		sprite_2d.flip_h = direction < 0
 		
 	move_and_slide()
-	if position.y >= 600:
+	if position.y >= 890:
 		take_damage(10)
 func add_force(explosion_position : Vector2):
 	applied_impulse = true
@@ -117,7 +117,7 @@ func take_damage(damage_amount : int):
 		iframes()
 		
 		health -= damage_amount
-		if position.y >= 600:
+		if position.y >= 890:
 			health = 0
 		
 		find_child("Healthbar2").update_healthbar(health, max_health)
