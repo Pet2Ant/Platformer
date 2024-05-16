@@ -4,6 +4,7 @@ var levels: Array[LevelData]
 
 var main_scene : Node2D = null
 var loaded_level: Levels = null 
+var levelId : int = -1
 func unload_level()->void:
 	if is_instance_valid(loaded_level):
 		loaded_level.queue_free()
@@ -12,6 +13,7 @@ func unload_level()->void:
 
 func  load_level(level_id : int) -> void:
 	print("Loading level : %s" % level_id)
+	print(get_parent().get_name())
 	print("Points are :%s" %GameManager.return_points())
 	unload_level()
 	GameManager.remove_points()
@@ -34,4 +36,9 @@ func get_level_data_by_id(id : int) -> LevelData:
 	for lvl: LevelData in levels:
 		if lvl.level_id == id :
 			level_to_return = lvl
+	levelId = id
 	return level_to_return
+	
+func load_main():
+	load("res://scenes/Scenes/mainscene.tscn")
+	

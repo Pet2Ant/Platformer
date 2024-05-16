@@ -5,16 +5,16 @@ var direction = Vector2()
 var cooldown = 0.8  # Cooldown time in seconds reduce for faster shooting
 var timer = 0.0  # Time since last shot
 
-
 func _process(delta):
 	direction = get_global_mouse_position() - global_position
 	rotation = direction.angle()
 
 	timer += delta  # Increment the timer
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and timer >= cooldown:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and timer >= cooldown && get_parent().can_control == true:
 		shoot()
 		timer = 0.0  
-
+	elif get_parent().can_control == false:
+		set_process(false)
 func cooldown_power_up(power_up):
 	cooldown = power_up
 

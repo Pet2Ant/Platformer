@@ -2100,6 +2100,10 @@ position = Vector2(3439, 252)
 position = Vector2(5842, 173)
 win_condition = true
 
+[node name="Checkpoint5" parent="CheckpointHolder" instance=ExtResource("15_p6dng")]
+position = Vector2(259, 279)
+win_condition = true
+
 [node name="Checkpoint2" parent="CheckpointHolder" instance=ExtResource("15_p6dng")]
 visible = false
 position = Vector2(121, 284)
@@ -2404,6 +2408,7 @@ position = Vector2(4347, 355)
 position = Vector2(367, 261)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.7, 0.7)

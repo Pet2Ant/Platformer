@@ -18,5 +18,5 @@ func _on_area_2d_body_entered(body):
 		await animation_player.animation_finished
 		queue_free()
 		body.can_take_damage = true
-		body.take_damage(10)
+		GameManager.load_world()
 		

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqjb7rpjsxv6c"]
+
+[ext_resource type="PackedScene" uid="uid://cdqemf3e72le7" path="res://scenes/Scenes/Text.tscn" id="1_44yi6"]
+[ext_resource type="Script" path="res://scripts/Classes/level.gd" id="1_dmnl6"]
+
+[node name="TransitionScene" type="Node2D" node_paths=PackedStringArray("level_start_pos")]
+script = ExtResource("1_dmnl6")
+level_start_pos = NodePath(".")
+
+[node name="TextScene" parent="." instance=ExtResource("1_44yi6")]

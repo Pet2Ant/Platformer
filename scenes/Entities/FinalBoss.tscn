@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://b735oj4q530c0"]
+[gd_scene load_steps=72 format=3 uid="uid://n33md5n214li"]
 
 [ext_resource type="Texture2D" uid="uid://dhc11rfgd75wg" path="res://athtech_assets/Undead executioner puppet/png/attacking.png" id="1_0l766"]
 [ext_resource type="Texture2D" uid="uid://16iq5tef27yx" path="res://athtech_assets/Undead executioner puppet/png/death.png" id="2_k84mr"]

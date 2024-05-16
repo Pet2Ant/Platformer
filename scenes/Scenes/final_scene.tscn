@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx3gpix8ocdbs"]
+
+[ext_resource type="Script" path="res://scripts/Classes/level.gd" id="1_s4826"]
+[ext_resource type="Script" path="res://scripts/FinalTextScript.gd" id="2_goko7"]
+[ext_resource type="Texture2D" uid="uid://b4e7cepel55wj" path="res://athtech_assets/background/modern-white-background-free-vector.jpg" id="2_x2bth"]
+
+[node name="FinalScene" type="Node2D" node_paths=PackedStringArray("level_start_pos")]
+script = ExtResource("1_s4826")
+level_id = 3
+level_start_pos = NodePath(".")
+
+[node name="FinalText" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="FinalText"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 15.175
+anchor_bottom = 10.05
+offset_right = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+script = ExtResource("2_goko7")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="FinalText"]
+z_index = -1
+position = Vector2(979, 695)
+scale = Vector2(3.1832, 3.5125)
+texture = ExtResource("2_x2bth")

@@ -154,7 +154,7 @@ func handle_danger() -> void:
 	reset_player()
 func reset_player() -> void:
 	
-	LevelManager.loaded_level.level_start_pos.global_position = starting_position
+	LevelManager.loaded_level.level_start_pos.global_position = starting_position 
 	global_position = starting_position
 	visible = true
 	can_control = true
