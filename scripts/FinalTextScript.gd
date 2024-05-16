@@ -24,14 +24,14 @@ func scroll_text(input_text:String) -> void:
 		#print(count)
 	#print(LevelManager.loaded_level)
 	for i in get_parsed_text():
-		visible_characters += 100
+		visible_characters += 6
 		await get_tree().create_timer(0.1).timeout
 		count += 1 
 		#print(count)
 		transition(count)
 
 func transition(count):
-	if count == 558/100:
+	if count == 558/6:
 		LevelManager.unload_level()
 		get_tree().current_scene.find_child("UI Main").find_child("Control").reactivate()
 		load("res://scenes/main_menu.tscn")
