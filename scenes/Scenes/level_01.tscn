@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dt7lxw5amov3s"]
+[gd_scene load_steps=41 format=3 uid="uid://dt7lxw5amov3s"]
 
 [ext_resource type="Texture2D" uid="uid://0f04t3a54sip" path="res://tilemap test 1.png" id="1_pqhes"]
 [ext_resource type="Script" path="res://scripts/Classes/level.gd" id="1_v61l8"]
@@ -19,14 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://b7m6nviqo3ous" path="res://athtech_assets/background/Jungle/1.Backround.png" id="21_w05eu"]
 [ext_resource type="Texture2D" uid="uid://cowcshaxl7eh5" path="res://athtech_assets/background/Jungle/green.png" id="22_0mwna"]
 [ext_resource type="Texture2D" uid="uid://dhpyggtpaujnx" path="res://athtech_assets/background/Jungle/2.Trees_back.png" id="22_lw4ps"]
-[ext_resource type="PackedScene" uid="uid://dtr2tupci1e3n" path="res://scenes/Interactables/Powerup.tscn" id="22_posvm"]
 [ext_resource type="Texture2D" uid="uid://t77jweonx48e" path="res://athtech_assets/background/Jungle/3.Trees_front.png" id="23_xroaa"]
 [ext_resource type="Texture2D" uid="uid://c4fe5xmxygcgn" path="res://athtech_assets/background/Jungle/4.Ground.png" id="24_85700"]
 [ext_resource type="PackedScene" uid="uid://bi13am72uaex" path="res://scenes/falling_spikes.tscn" id="25_muv6x"]
 [ext_resource type="Texture2D" uid="uid://b0lcvgxuddwgf" path="res://athtech_assets/background/4.Ground.png" id="25_uryj0"]
 [ext_resource type="PackedScene" uid="uid://b7yyeeytwrw0m" path="res://scenes/javaenemy.tscn" id="26_gb7os"]
 [ext_resource type="AudioStream" uid="uid://byqwgaevoxwia" path="res://Sounds/main_theme2.mp3" id="27_24foq"]
-[ext_resource type="PackedScene" uid="uid://ch6ln8e6pbh7m" path="res://scenes/Entities/prolog_enemy.tscn" id="27_dhbkx"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_1jdd8"]
 tile_data = PackedInt32Array(0, 0, 5, 65536, 131072, 7, 1, 65536, 0, 65537, 0, 6, 131073, 65536, 7, 2, 65536, 0, 65538, 65536, 1, 131074, 131072, 7, 3, 65536, 0, 65539, 65536, 1, 131075, 0, 6, 196611, 65536, 7, 4, 65536, 0, 65540, 65536, 1, 131076, 0, 6, 196612, 65536, 268435463, 5, 65536, 0, 65541, 65536, 1, 131077, 131072, 268435463, 6, 65536, 0, 65542, 0, 6, 131078, 65536, 268435463, 7, 0, 5, 65543, 131072, 268435463)
@@ -1876,7 +1874,7 @@ position = Vector2(4802, 270)
 position = Vector2(3601, 227)
 
 [node name="MainAvatar" parent="." instance=ExtResource("9_wqeiw")]
-position = Vector2(122, 281)
+position = Vector2(5735, 171)
 collision_layer = 11
 collision_mask = 7
 floor_snap_length = 6.0
@@ -2102,7 +2100,7 @@ position = Vector2(5842, 173)
 win_condition = true
 
 [node name="Checkpoint5" parent="CheckpointHolder" instance=ExtResource("15_p6dng")]
-position = Vector2(242, 82)
+position = Vector2(-647, 345)
 win_condition = true
 
 [node name="Checkpoint2" parent="CheckpointHolder" instance=ExtResource("15_p6dng")]
@@ -2163,7 +2161,7 @@ position = Vector2(5598, 124)
 position = Vector2(5457, 214)
 
 [node name="Coins38" parent="CoinHolder" instance=ExtResource("16_ps4r3")]
-position = Vector2(5776, 183)
+position = Vector2(5787, 177)
 
 [node name="Coins25" parent="CoinHolder" instance=ExtResource("16_ps4r3")]
 position = Vector2(4153, -218)
@@ -2303,15 +2301,6 @@ custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 text = "Restart"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="UIManager/PauseMenu/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="WorldMap" type="Button" parent="UIManager/PauseMenu/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(50, 30)
-layout_mode = 2
-text = "World Map"
-
 [node name="HBoxContainer4" type="HBoxContainer" parent="UIManager/PauseMenu/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -2414,9 +2403,6 @@ position = Vector2(3039, 172)
 
 [node name="HealthUp7" parent="HealthUpHolder" instance=ExtResource("21_s0hxg")]
 position = Vector2(4347, 355)
-
-[node name="PowerUp" parent="." instance=ExtResource("22_posvm")]
-position = Vector2(367, 261)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -2569,13 +2555,9 @@ stream = ExtResource("27_24foq")
 volume_db = -24.315
 autoplay = true
 
-[node name="PrologEnemy" parent="." instance=ExtResource("27_dhbkx")]
-position = Vector2(283, 224)
-
 [connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer/Resume" to="UIManager" method="_on_resume_pressed"]
 [connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer2/Restart" to="UIManager" method="_on_restart_pressed"]
-[connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer3/WorldMap" to="UIManager" method="_on_world_map_pressed"]
 [connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer4/Quit" to="UIManager" method="_on_quit_pressed"]
 [connection signal="pressed" from="UIManager/WinScreen/Restart" to="UIManager" method="_on_restart_pressed"]
 [connection signal="pressed" from="UIManager/WinScreen/FinishLevel" to="UIManager" method="_on_finish_level_pressed"]

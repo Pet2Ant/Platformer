@@ -2314,15 +2314,6 @@ custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 text = "Restart"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="UIManager2/PauseMenu/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="WorldMap" type="Button" parent="UIManager2/PauseMenu/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(50, 30)
-layout_mode = 2
-text = "World Map"
-
 [node name="HBoxContainer4" type="HBoxContainer" parent="UIManager2/PauseMenu/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -2407,7 +2398,6 @@ text = "Go to World"
 
 [connection signal="pressed" from="UIManager2/PauseMenu/VBoxContainer/HBoxContainer/Resume" to="UIManager2" method="_on_resume_pressed"]
 [connection signal="pressed" from="UIManager2/PauseMenu/VBoxContainer/HBoxContainer2/Restart" to="UIManager2" method="_on_restart_pressed"]
-[connection signal="pressed" from="UIManager2/PauseMenu/VBoxContainer/HBoxContainer3/WorldMap" to="UIManager2" method="_on_world_map_pressed"]
 [connection signal="pressed" from="UIManager2/PauseMenu/VBoxContainer/HBoxContainer4/Quit" to="UIManager2" method="_on_quit_pressed"]
 [connection signal="pressed" from="UIManager2/WinScreen/Restart" to="UIManager2" method="_on_restart_pressed"]
 [connection signal="pressed" from="UIManager2/WinScreen/FinishLevel" to="UIManager2" method="_on_finish_level_pressed"]
