@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dpb3nj6qe5pwu" path="res://scenes/FinalBoss/MainAvatar.tscn" id="4_athbc"]
 [ext_resource type="PackedScene" uid="uid://cwy63okfqf7an" path="res://scenes/Interactables/checkpoint.tscn" id="5_mm313"]
 [ext_resource type="Script" path="res://scripts/UIManager.gd" id="6_r2gl5"]
-[ext_resource type="Texture2D" uid="uid://dgglg4im4bpkj" path="res://athtech_assets/background/City_Clean/1.Sky.png" id="7_d1xsm"]
+[ext_resource type="Texture2D" uid="uid://drj4lnkyu4xro" path="res://athtech_assets/background/City_Clean/1.Sky.png" id="7_d1xsm"]
 [ext_resource type="Texture2D" uid="uid://ce1nomgqqhyqy" path="res://athtech_assets/items/1 whole euro.png" id="7_ro4ij"]
 [ext_resource type="Texture2D" uid="uid://d3jocxhdn77dk" path="res://athtech_assets/background/City_Clean/2.Buildings.png" id="8_48w7y"]
 [ext_resource type="Texture2D" uid="uid://c72ds8r3e8acv" path="res://athtech_assets/background/City_Clean/3.River.png" id="9_6yx1t"]
