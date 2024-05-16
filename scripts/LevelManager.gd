@@ -39,5 +39,6 @@ func get_level_data_by_id(id : int) -> LevelData:
 	levelId = id
 	return level_to_return
 	
-
+func load_main():
+	load("res://scenes/Scenes/mainscene.tscn")
 	
