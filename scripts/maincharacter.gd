@@ -120,7 +120,7 @@ func take_damage(damage_amount : int):
 		if position.y >= 600:
 			health = 0
 		
-		get_node("Healthbar2").update_healthbar(health, max_health)
+		find_child("Healthbar2").update_healthbar(health, max_health)
 		
 		if health <= 0:
 			handle_danger()
