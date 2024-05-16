@@ -670,7 +670,7 @@ offset_left = 5.0
 offset_top = 84.0
 offset_right = 114.0
 offset_bottom = 115.0
-text = "Restart Level"
+text = "Menu Screen "
 
 [node name="FinishLevel" type="Button" parent="UIManager2/WinScreen"]
 custom_minimum_size = Vector2(50, 30)
@@ -679,7 +679,7 @@ offset_left = 124.0
 offset_top = 83.0
 offset_right = 233.0
 offset_bottom = 114.0
-text = "Go to World"
+text = "Next Level"
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 

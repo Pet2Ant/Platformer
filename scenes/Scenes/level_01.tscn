@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dt7lxw5amov3s"]
+[gd_scene load_steps=43 format=3 uid="uid://dt7lxw5amov3s"]
 
 [ext_resource type="Texture2D" uid="uid://0f04t3a54sip" path="res://tilemap test 1.png" id="1_pqhes"]
 [ext_resource type="Script" path="res://scripts/Classes/level.gd" id="1_v61l8"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://b0lcvgxuddwgf" path="res://athtech_assets/background/4.Ground.png" id="25_uryj0"]
 [ext_resource type="PackedScene" uid="uid://b7yyeeytwrw0m" path="res://scenes/javaenemy.tscn" id="26_gb7os"]
 [ext_resource type="AudioStream" uid="uid://byqwgaevoxwia" path="res://Sounds/main_theme2.mp3" id="27_24foq"]
+[ext_resource type="PackedScene" uid="uid://ch6ln8e6pbh7m" path="res://scenes/Entities/prolog_enemy.tscn" id="27_dhbkx"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_1jdd8"]
 tile_data = PackedInt32Array(0, 0, 5, 65536, 131072, 7, 1, 65536, 0, 65537, 0, 6, 131073, 65536, 7, 2, 65536, 0, 65538, 65536, 1, 131074, 131072, 7, 3, 65536, 0, 65539, 65536, 1, 131075, 0, 6, 196611, 65536, 7, 4, 65536, 0, 65540, 65536, 1, 131076, 0, 6, 196612, 65536, 268435463, 5, 65536, 0, 65541, 65536, 1, 131077, 131072, 268435463, 6, 65536, 0, 65542, 0, 6, 131078, 65536, 268435463, 7, 0, 5, 65543, 131072, 268435463)
@@ -2101,7 +2102,7 @@ position = Vector2(5842, 173)
 win_condition = true
 
 [node name="Checkpoint5" parent="CheckpointHolder" instance=ExtResource("15_p6dng")]
-position = Vector2(259, 279)
+position = Vector2(242, 82)
 win_condition = true
 
 [node name="Checkpoint2" parent="CheckpointHolder" instance=ExtResource("15_p6dng")]
@@ -2232,6 +2233,16 @@ position = Vector2(1067, 354)
 [node name="UIManager" type="CanvasLayer" parent="."]
 process_mode = 3
 script = ExtResource("16_f8qpf")
+
+[node name="ScoreDisplay" type="Label" parent="UIManager"]
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.069
+anchor_bottom = 0.182
+offset_top = 1.0
+offset_right = -0.952003
+offset_bottom = 1.2
+text = "Score: 0"
 
 [node name="CoinIcon" type="TextureRect" parent="UIManager"]
 offset_left = 15.0
@@ -2372,7 +2383,7 @@ offset_left = 5.0
 offset_top = 84.0
 offset_right = 114.0
 offset_bottom = 115.0
-text = "Restart Level"
+text = "Menu Screen "
 
 [node name="FinishLevel" type="Button" parent="UIManager/WinScreen"]
 custom_minimum_size = Vector2(50, 30)
@@ -2381,7 +2392,7 @@ offset_left = 124.0
 offset_top = 83.0
 offset_right = 233.0
 offset_bottom = 114.0
-text = "Go to World"
+text = "Next Level"
 
 [node name="HealthUpHolder" type="Node2D" parent="."]
 position = Vector2(-51, -26)
@@ -2408,7 +2419,6 @@ position = Vector2(4347, 355)
 position = Vector2(367, 261)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.7, 0.7)
@@ -2558,6 +2568,9 @@ position = Vector2(4297, -113)
 stream = ExtResource("27_24foq")
 volume_db = -24.315
 autoplay = true
+
+[node name="PrologEnemy" parent="." instance=ExtResource("27_dhbkx")]
+position = Vector2(283, 224)
 
 [connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="UIManager/PauseMenu/VBoxContainer/HBoxContainer/Resume" to="UIManager" method="_on_resume_pressed"]

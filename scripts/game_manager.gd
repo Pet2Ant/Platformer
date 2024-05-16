@@ -1,11 +1,12 @@
 extends Node
 signal gained_coins(int)
-
+signal gained_score(int)
 var current_checkpoint : Checkpoint
 var pause_menu
 var win_screen
 var coin_label
 var score_label
+var score_hub 
 var player : Player 
 var points = 0
 var coins = 0
@@ -39,6 +40,11 @@ func respawn_player():
 func gain_coins(coins_gained):
 	coins += coins_gained
 	emit_signal("gained_coins", coins)
+	
+func gain_score(score_gained):
+	score += score_gained
+	print(score)
+	emit_signal("gained_score", score)
 
 func power_up(power_up,body):
 	playerNode = body

@@ -148,9 +148,9 @@ func handle_danger() -> void:
 	await $AnimationPlayer.animation_finished
 	visible = false
 	var lvl = LevelManager.loaded_level.level_id
+	GameManager.score = 0
 	LevelManager.unload_level()
 	LevelManager.load_level(lvl)
-	print(LevelManager.loaded_level)
 	reset_player()
 func reset_player() -> void:
 	

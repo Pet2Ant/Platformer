@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://s6lqhwejdjx7"]
+[gd_scene load_steps=36 format=3 uid="uid://s6lqhwejdjx7"]
 
 [ext_resource type="Script" path="res://scripts/Classes/level.gd" id="1_8keqg"]
 [ext_resource type="PackedScene" uid="uid://byo7ivco7f3d2" path="res://scenes/FinalBoss/FinalBoss.tscn" id="2_6s2vi"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://ddyjgl8273sr2" path="res://athtech_assets/background/City_Dirty/3.Wall.png" id="18_ewk3u"]
 [ext_resource type="Texture2D" uid="uid://db6vhpbkg2drv" path="res://athtech_assets/background/City_Dirty/4.Sidewalk.png" id="19_74nyo"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="20_6sapj"]
+[ext_resource type="Script" path="res://scripts/UIManager.gd" id="21_a6eyl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h8eod"]
 texture = ExtResource("3_c7vfb")
@@ -2239,3 +2240,174 @@ texture = ExtResource("19_74nyo")
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("20_6sapj")
+
+[node name="UIManager2" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("21_a6eyl")
+
+[node name="ScoreDisplay" type="Label" parent="UIManager2"]
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 0.069
+anchor_bottom = 0.182
+offset_top = 1.0
+offset_right = -0.952003
+offset_bottom = 1.2
+text = "Score: 0"
+
+[node name="CoinIcon" type="TextureRect" parent="UIManager2"]
+offset_left = 15.0
+offset_top = 19.0
+offset_right = 39.0
+offset_bottom = 43.0
+texture = ExtResource("9_1afxa")
+
+[node name="CoinDisplay" type="Label" parent="UIManager2"]
+anchors_preset = -1
+anchor_right = 0.133
+anchor_bottom = 0.132
+offset_left = 47.0
+offset_top = 14.0
+offset_right = 0.136002
+offset_bottom = 0.200001
+theme_override_colors/font_color = Color(0.027451, 0.0196078, 0.00392157, 1)
+theme_override_font_sizes/font_size = 24
+text = "0
+"
+
+[node name="PauseMenu" type="ColorRect" parent="UIManager2"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -80.0
+offset_right = 60.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.392157, 0.458824, 0.623529, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIManager2/PauseMenu"]
+layout_mode = 0
+offset_top = 10.0
+offset_right = 120.0
+offset_bottom = 150.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIManager2/PauseMenu/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="UIManager2/PauseMenu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+text = "Resume"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIManager2/PauseMenu/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Restart" type="Button" parent="UIManager2/PauseMenu/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+text = "Restart"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIManager2/PauseMenu/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="WorldMap" type="Button" parent="UIManager2/PauseMenu/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+text = "World Map"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UIManager2/PauseMenu/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Quit" type="Button" parent="UIManager2/PauseMenu/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+text = "Quit"
+
+[node name="WinScreen" type="ColorRect" parent="UIManager2"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -60.0
+offset_right = 120.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.392157, 0.458824, 0.623529, 1)
+
+[node name="Label" type="Label" parent="UIManager2/WinScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = -13.5
+offset_right = 30.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Score: 0"
+
+[node name="CoinIcon" type="TextureRect" parent="UIManager2/WinScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 12.0
+offset_bottom = 36.0
+grow_horizontal = 2
+texture = ExtResource("9_1afxa")
+
+[node name="CoinDisplay" type="Label" parent="UIManager2/WinScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.066
+anchor_bottom = 0.057
+offset_left = 132.0
+offset_top = 5.0
+offset_right = 130.16
+offset_bottom = 32.16
+theme_override_colors/font_color = Color(0.027451, 0.0196078, 0.00392157, 1)
+theme_override_font_sizes/font_size = 24
+text = "0
+"
+
+[node name="Restart" type="Button" parent="UIManager2/WinScreen"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 84.0
+offset_right = 114.0
+offset_bottom = 115.0
+text = "Restart Level"
+
+[node name="FinishLevel" type="Button" parent="UIManager2/WinScreen"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 0
+offset_left = 124.0
+offset_top = 83.0
+offset_right = 233.0
+offset_bottom = 114.0
+text = "Go to World"
+
+[connection signal="pressed" from="UIManager2/PauseMenu/VBoxContainer/HBoxContainer/Resume" to="UIManager2" method="_on_resume_pressed"]
+[connection signal="pressed" from="UIManager2/PauseMenu/VBoxContainer/HBoxContainer2/Restart" to="UIManager2" method="_on_restart_pressed"]
+[connection signal="pressed" from="UIManager2/PauseMenu/VBoxContainer/HBoxContainer3/WorldMap" to="UIManager2" method="_on_world_map_pressed"]
+[connection signal="pressed" from="UIManager2/PauseMenu/VBoxContainer/HBoxContainer4/Quit" to="UIManager2" method="_on_quit_pressed"]
+[connection signal="pressed" from="UIManager2/WinScreen/Restart" to="UIManager2" method="_on_restart_pressed"]
+[connection signal="pressed" from="UIManager2/WinScreen/FinishLevel" to="UIManager2" method="_on_finish_level_pressed"]

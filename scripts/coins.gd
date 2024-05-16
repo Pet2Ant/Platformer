@@ -5,7 +5,7 @@ func _on_area_2d_area_entered(area):
 	if area.get_parent() is Player:
 		if got_coin == false :
 			GameManager.gain_coins(1)
-			GameManager.score += 50
+			GameManager.gain_score(50)
 		die()
 		
 func die():
