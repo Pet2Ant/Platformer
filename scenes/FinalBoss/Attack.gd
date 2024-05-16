@@ -2,16 +2,17 @@ extends State
 
 func enter():
 	super.enter()
-	
+	combo()
 	
 func attack(move = "1"):
 	animation_player.play("attack_" + move)
 	await animation_player.animation_finished
-
 func combo():
 	var move_set = ["1","1","2"]
 	for i in move_set:
 		await attack(i)
+		get_parent().get_parent().get_parent().find_child("MainAvatar").take_damage(1)
+	
 	combo()
 
 
@@ -21,9 +22,3 @@ func transition():
 		get_parent().change_state("Follow")
 
 
-func _on_area_2d_area_entered(area):
-	get_tree().create_timer(0.6).timeout
-	if area.get_parent() is Player:
-		combo()
-		area.get_parent().take_damage(1)
-		print(area.get_parent().health)

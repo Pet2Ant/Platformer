@@ -6,20 +6,55 @@
 [ext_resource type="Texture2D" uid="uid://cetlf1dpwlkat" path="res://athtech_assets/items/DEGREE_ACQUIRED.png" id="2_ahsjq"]
 [ext_resource type="Texture2D" uid="uid://dt6be8h7rcf0l" path="res://athtech_assets/items/game_over_2.png" id="2_qfcf7"]
 
-[sub_resource type="Animation" id="Animation_0anl4"]
-resource_name = "idle"
-length = 1.2
+[sub_resource type="Animation" id="Animation_mpi72"]
+resource_name = "AcadProb"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_qfcf7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
+"values": [Vector2(0, -1000), Vector2(0, -500), Vector2(0, -250), Vector2(0, -125), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_4j63a"]
@@ -62,45 +97,6 @@ tracks/2/keys = {
 "values": [Vector2(0, 0), Vector2(0, -45)]
 }
 
-[sub_resource type="Animation" id="Animation_mpi72"]
-resource_name = "AcadProb"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_qfcf7")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -1000), Vector2(0, -500), Vector2(0, -250), Vector2(0, -125), Vector2(0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_8jrva"]
 resource_name = "GameOver"
 length = 5.0
@@ -140,6 +136,34 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_0anl4"]
+resource_name = "idle"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gfpjf"]
 _data = {
@@ -155,6 +179,8 @@ _data = {
 script = ExtResource("1_q1x01")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -3.33333)
 texture = ExtResource("1_vfwue")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -170,8 +196,8 @@ shape = SubResource("CircleShape2D_lk2j7")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-position = Vector2(-0.5, -0.499998)
-scale = Vector2(0.78125, 0.96875)
+position = Vector2(0, -70)
+scale = Vector2(2.5, 3.1)
 texture = ExtResource("2_72u7u")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

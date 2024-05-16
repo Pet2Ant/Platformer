@@ -4,13 +4,18 @@ extends State
 func enter():
 	super.enter()
 	animation_player.play("death")
+	await animation_player.animation_finished
+	
 
 func boss_slained():
+	print("lol?")
 	animation_player.play("boss_slained")
-	spawn()
+	await animation_player.animation_finished
+
 
 func spawn():
+	print("?????????")
 	var degree = degree_node.instantiate()
-	degree.position = owner.position + Vector2(40,0)
+	degree.position = get_parent().get_parent().get_parent().find_child("MainAvatar").position + Vector2(40,0)
 	get_tree().current_scene.add_child(degree)
 	

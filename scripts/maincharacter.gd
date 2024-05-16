@@ -20,6 +20,7 @@ var force_duration = 0.5
 var friction = 0.75
 var stop_friction = 5*friction
 @onready var sprite_2d = $AnimatedSprite2D
+@onready var animation_player = $AnimationPlayer
 var starting_position = Vector2(180,200)
 var max_health = 3
 var health = 0
@@ -43,21 +44,21 @@ func _physics_process(delta):
 	# Handle input.
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector = input_vector.normalized()
-
-	if input_vector.x != 0:
-		velocity.x = lerp(velocity.x, input_vector.x * SPEED, friction * delta)
-	else:
-		velocity.x = lerp(velocity.x, 0.0, stop_friction * delta)
+	if is_on_floor():
+		if input_vector.x != 0:
+			velocity.x = lerp(velocity.x, input_vector.x * SPEED, friction * delta)
+		else:
+			velocity.x = lerp(velocity.x, 0.0, stop_friction * delta)
   
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or coyote_timer < COYOTE_TIME) :
+	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or coyote_timer < COYOTE_TIME)and !applied_impulse :
 		velocity.y = JUMP_VELOCITY
 		is_jumping = true
 	elif  Input.is_action_just_pressed("ui_accept") and is_jumping:
 		velocity.y = JUMP_VELOCITY
 
-	if is_jumping and Input.is_action_just_pressed("ui_accept") and jump_timer <jump_time :
+	if is_jumping and Input.is_action_just_pressed("ui_accept") and jump_timer <jump_time and !applied_impulse :
 		jump_timer += delta
 	else:
 		is_jumping  = false
@@ -96,19 +97,18 @@ func _physics_process(delta):
 func add_force(explosion_position : Vector2):
 	applied_impulse = true
 	var direction = (global_position.x - explosion_position.x)
-	print("direction",)
 	
 	if direction < 0:
 		if SPEED > 0:
-			speed_dir = 130
+			speed_dir = 80
 		elif SPEED < 0 :
-			speed_dir = -130
+			speed_dir = -80
 		velocity.x = -applied_impulse_force * speed_dir 
 	elif direction > 0:
 		if SPEED > 0:
-			speed_dir = 130
+			speed_dir = 80
 		elif SPEED < 0 :
-			speed_dir = -130
+			speed_dir = -80
 		velocity.x = applied_impulse_force * speed_dir 
 	
 func take_damage(damage_amount : int):

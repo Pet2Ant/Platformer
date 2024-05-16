@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dpb3nj6qe5pwu"]
+[gd_scene load_steps=28 format=3 uid="uid://dpb3nj6qe5pwu"]
 
 [ext_resource type="Script" path="res://scripts/maincharacter.gd" id="1_8jnyu"]
 [ext_resource type="Texture2D" uid="uid://jyg53gnkvtbg" path="res://athtech_assets/main character/robot player-Sheet.png" id="3_nmt3h"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ckmo3yxf4jdq5" path="res://scenes/Entities/boomstick.tscn" id="4_uysf1"]
 [ext_resource type="AudioStream" uid="uid://bgg0a1p7h6mcp" path="res://Sounds/damage_taken.mp3" id="5_s4o8d"]
 [ext_resource type="AudioStream" uid="uid://0fhh5eoikdnk" path="res://Sounds/death.mp3" id="6_pjogn"]
+[ext_resource type="PackedScene" uid="uid://bqv2gw7sx0fwf" path="res://scenes/healthbar.tscn" id="5_cyg01"]
+[ext_resource type="Texture2D" uid="uid://cirp2y7yibg5i" path="res://athtech_assets/main character/hands_up.png" id="5_yv55i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4054"]
 size = Vector2(20, 21)
@@ -40,6 +42,26 @@ region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxyrt"]
 atlas = ExtResource("4_ucx5j")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlx50"]
+atlas = ExtResource("3_nmt3h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7ypt"]
+atlas = ExtResource("3_nmt3h")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m260"]
+atlas = ExtResource("3_nmt3h")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1jrl"]
+atlas = ExtResource("5_yv55i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y5mo"]
+atlas = ExtResource("3_nmt3h")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8pldg"]
@@ -77,9 +99,56 @@ animations = [{
 "loop": true,
 "name": &"walking",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlx50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7ypt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m260")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1jrl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y5mo")
+}],
+"loop": true,
+"name": &"win",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8jr7c"]
+
+[sub_resource type="Animation" id="Animation_26qwd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"win"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_bb205"]
 resource_name = "die"
@@ -112,10 +181,42 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_g1x75"]
+resource_name = "win"
+length = 1.5
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"win"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 0, 1, 2, 4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwihj"]
 _data = {
+"RESET": SubResource("Animation_26qwd"),
 "die": SubResource("Animation_bb205"),
-"iframes": SubResource("Animation_mf85u")
+"iframes": SubResource("Animation_mf85u"),
+"win": SubResource("Animation_g1x75")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -132,7 +233,7 @@ position = Vector2(1, 7)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, 0)
 sprite_frames = SubResource("SpriteFrames_8pldg")
-animation = &"walking"
+animation = &"win"
 autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -155,3 +256,19 @@ bus = &"Damage"
 stream = ExtResource("6_pjogn")
 mix_target = 1
 bus = &"death"
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, 1)
+position_smoothing_speed = 10.0
+rotation_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_horizontal_offset = 0.5
+drag_vertical_offset = -0.5
+drag_top_margin = 0.5
+drag_bottom_margin = 0.5
+
+[node name="Healthbar2" parent="." instance=ExtResource("5_cyg01")]
+offset_left = -13.0
+offset_top = -21.0
+offset_right = -13.0
+offset_bottom = -21.0
