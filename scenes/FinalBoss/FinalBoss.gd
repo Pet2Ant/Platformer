@@ -13,6 +13,7 @@ var health:= 3:
 			progress_bar.visible = false
 			find_child("FiniteStateMachine").change_state("Death")
 func _ready():
+	$AudioStreamPlayer.play()
 	set_physics_process(false)
 	
 

@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmmffkyw7i6em"]
+[gd_scene load_steps=14 format=3 uid="uid://cmmffkyw7i6em"]
 
 [ext_resource type="Script" path="res://scenes/FinalBoss/FinalDegree.gd" id="1_q1x01"]
 [ext_resource type="Texture2D" uid="uid://dq4nrwb3vs7t1" path="res://athtech_assets/items/final_degree.png" id="1_vfwue"]
 [ext_resource type="Texture2D" uid="uid://dcxxwmavaor5x" path="res://athtech_assets/items/game_over.png" id="2_72u7u"]
 [ext_resource type="Texture2D" uid="uid://cetlf1dpwlkat" path="res://athtech_assets/items/DEGREE_ACQUIRED.png" id="2_ahsjq"]
 [ext_resource type="Texture2D" uid="uid://dt6be8h7rcf0l" path="res://athtech_assets/items/game_over_2.png" id="2_qfcf7"]
+[ext_resource type="AudioStream" uid="uid://dn662usxa42to" path="res://Sounds/level_finish.mp3" id="6_xdlga"]
+[ext_resource type="AudioStream" uid="uid://b5o3wcykkbkek" path="res://Sounds/attack1.mp3" id="7_41tm3"]
 
 [sub_resource type="Animation" id="Animation_mpi72"]
 resource_name = "AcadProb"
@@ -180,7 +182,6 @@ script = ExtResource("1_q1x01")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(0, -3.33333)
 texture = ExtResource("1_vfwue")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -199,5 +200,11 @@ self_modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -70)
 scale = Vector2(2.5, 3.1)
 texture = ExtResource("2_72u7u")
+
+[node name="Finish" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xdlga")
+
+[node name="AcadProb" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_41tm3")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -71,40 +71,65 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_35uvs"]
 radius = 6.0
 
-[sub_resource type="Animation" id="Animation_isaja"]
-resource_name = "Sound"
+[sub_resource type="Animation" id="Animation_ccdbw"]
+resource_name = "idle"
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer:playing")
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_0xkub"]
+[sub_resource type="Animation" id="Animation_28n6u"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer:playing")
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hiua0"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jbav1"]
 _data = {
-"RESET": SubResource("Animation_0xkub"),
-"Sound": SubResource("Animation_isaja")
+"RESET": SubResource("Animation_28n6u"),
+"idle": SubResource("Animation_ccdbw")
 }
 
 [node name="Coins" type="Node2D"]
@@ -127,7 +152,8 @@ volume_db = -3.557
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_hiua0")
+"": SubResource("AnimationLibrary_jbav1")
 }
+autoplay = "idle"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
