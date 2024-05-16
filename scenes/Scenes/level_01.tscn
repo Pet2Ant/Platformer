@@ -2299,7 +2299,7 @@ alignment = 1
 [node name="Restart" type="Button" parent="UIManager/PauseMenu/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
-text = "Restart"
+text = "Main Menu"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="UIManager/PauseMenu/VBoxContainer"]
 layout_mode = 2
