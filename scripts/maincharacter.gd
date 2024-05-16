@@ -17,6 +17,8 @@ var applied_impulse_force = 5
 var can_control : bool = true
 var force_timer = 0.0
 var force_duration = 0.5  
+var friction = 0.75
+var stop_friction = 5*friction
 @onready var sprite_2d = $AnimatedSprite2D
 var starting_position = Vector2(180,200)
 var max_health = 3
@@ -37,8 +39,16 @@ func _physics_process(delta):
 		coyote_timer += delta
 	else:
 		coyote_timer = 0.0
-	
-	  
+	var input_vector: Vector2 = Vector2.ZERO
+	# Handle input.
+	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_vector = input_vector.normalized()
+
+	if input_vector.x != 0:
+		velocity.x = lerp(velocity.x, input_vector.x * SPEED, friction * delta)
+	else:
+		velocity.x = lerp(velocity.x, 0.0, stop_friction * delta)
+  
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or coyote_timer < COYOTE_TIME) :
@@ -82,7 +92,7 @@ func _physics_process(delta):
 		
 	move_and_slide()
 	if position.y >= 600:
-		die()
+		take_damage(10)
 func add_force(explosion_position : Vector2):
 	applied_impulse = true
 	var direction = (global_position.x - explosion_position.x)
@@ -103,11 +113,14 @@ func add_force(explosion_position : Vector2):
 	
 func take_damage(damage_amount : int):
 	if can_take_damage:
+		$Damage.play()
 		iframes()
 		
 		health -= damage_amount
+		if position.y >= 600:
+			health = 0
 		
-		#get_node("Healthbar2").update_healthbar(health, max_health)
+		get_node("Healthbar2").update_healthbar(health, max_health)
 		
 		if health <= 0:
 			handle_danger()
@@ -117,6 +130,8 @@ func iframes():
 	$AnimationPlayer.play("iframes")
 	await $AnimationPlayer.animation_finished
 	can_take_damage = true
+	
+
 	
 func power_up(power_up):
 	var boomstick_node = get_node("Boomstick")
@@ -128,6 +143,7 @@ func downgrade_power_up():
 		boomstick_node.cooldown_power_up(0.8)
 func handle_danger() -> void:
 	can_control = false
+	$Death.play()
 	$AnimationPlayer.play("die")
 	await $AnimationPlayer.animation_finished
 	visible = false

@@ -1,0 +1,81 @@
+[gd_resource type="AudioBusLayout" load_steps=14 format=3 uid="uid://dwjwdixrx2h67"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_x1r4n"]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_xlcun"]
+resource_name = "Chorus"
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_6i6i2"]
+resource_name = "Distortion"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_mu2cx"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_dbx5c"]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_wla0k"]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_pq1f6"]
+resource_name = "Chorus"
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_g7q0t"]
+resource_name = "PitchShift"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_q86c6"]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectBandPassFilter" id="AudioEffectBandPassFilter_r2bvb"]
+resource_name = "BandPassFilter"
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_airlv"]
+resource_name = "LowPassFilter"
+
+[sub_resource type="AudioEffectEQ21" id="AudioEffectEQ21_pqd7x"]
+resource_name = "EQ21"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_h0jra"]
+resource_name = "SpectrumAnalyzer"
+
+[resource]
+bus/0/volume_db = -3.11736
+bus/0/effect/0/effect = SubResource("AudioEffectReverb_x1r4n")
+bus/0/effect/0/enabled = false
+bus/0/effect/1/effect = SubResource("AudioEffectChorus_xlcun")
+bus/0/effect/1/enabled = false
+bus/0/effect/2/effect = SubResource("AudioEffectDistortion_6i6i2")
+bus/0/effect/2/enabled = false
+bus/0/effect/3/effect = SubResource("AudioEffectSpectrumAnalyzer_mu2cx")
+bus/0/effect/3/enabled = false
+bus/1/name = &"Damage"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_dbx5c")
+bus/1/effect/0/enabled = false
+bus/1/effect/1/effect = SubResource("AudioEffectReverb_wla0k")
+bus/1/effect/1/enabled = false
+bus/1/effect/2/effect = SubResource("AudioEffectChorus_pq1f6")
+bus/1/effect/2/enabled = false
+bus/1/effect/3/effect = SubResource("AudioEffectPitchShift_g7q0t")
+bus/1/effect/3/enabled = false
+bus/2/name = &"death"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectReverb_q86c6")
+bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectBandPassFilter_r2bvb")
+bus/2/effect/1/enabled = false
+bus/2/effect/2/effect = SubResource("AudioEffectLowPassFilter_airlv")
+bus/2/effect/2/enabled = true
+bus/2/effect/3/effect = SubResource("AudioEffectEQ21_pqd7x")
+bus/2/effect/3/enabled = false
+bus/2/effect/4/effect = SubResource("AudioEffectSpectrumAnalyzer_h0jra")
+bus/2/effect/4/enabled = false

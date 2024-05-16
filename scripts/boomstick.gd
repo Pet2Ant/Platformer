@@ -24,3 +24,4 @@ func shoot():
 	new_bullet.global_position = %ShootingPoint.global_position
 	new_bullet.global_rotation = %ShootingPoint.global_rotation
 	%ShootingPoint.add_child(new_bullet)
+	$AudioStreamPlayer.play()

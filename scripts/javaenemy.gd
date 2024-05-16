@@ -21,7 +21,9 @@ func _ready():
 func shoot():
 	while shooting:
 		$AnimationPlayer.play("Fire")
-		await get_tree().create_timer(firerate).timeout
+		$AudioStreamPlayer2D.play()
+		await get_tree().create_timer(0.55).timeout
+
 		
 func fire():
 	var spawned_ball = java_fire.instantiate()

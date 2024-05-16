@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckmo3yxf4jdq5"]
+[gd_scene load_steps=5 format=3 uid="uid://ckmo3yxf4jdq5"]
 
 [ext_resource type="Script" path="res://scripts/boomstick.gd" id="1_clt84"]
 [ext_resource type="Texture2D" uid="uid://dwxq34cwtbr6q" path="res://Godotgraphs/robot_gun.png" id="2_qc0gs"]
+[ext_resource type="AudioStream" uid="uid://bvl6ntgbopnh" path="res://Sounds/blaster2.mp3" id="3_r7sxg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0chn8"]
 radius = 14.1421
@@ -22,3 +23,7 @@ texture = ExtResource("2_qc0gs")
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/stick"]
 unique_name_in_owner = true
 position = Vector2(6, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_r7sxg")
+volume_db = -22.449
