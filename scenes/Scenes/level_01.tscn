@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dt7lxw5amov3s"]
+[gd_scene load_steps=42 format=3 uid="uid://ch4eoi5u38u0k"]
 
 [ext_resource type="Texture2D" uid="uid://0f04t3a54sip" path="res://tilemap test 1.png" id="1_pqhes"]
 [ext_resource type="Script" path="res://scripts/Classes/level.gd" id="1_v61l8"]
@@ -2100,7 +2100,8 @@ position = Vector2(5842, 173)
 win_condition = true
 
 [node name="Checkpoint5" parent="CheckpointHolder" instance=ExtResource("15_p6dng")]
-position = Vector2(-647, 345)
+visible = false
+position = Vector2(242, 82)
 win_condition = true
 
 [node name="Checkpoint2" parent="CheckpointHolder" instance=ExtResource("15_p6dng")]
