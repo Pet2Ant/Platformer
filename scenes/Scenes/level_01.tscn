@@ -1875,7 +1875,7 @@ position = Vector2(4802, 270)
 position = Vector2(3601, 227)
 
 [node name="MainAvatar" parent="." instance=ExtResource("9_wqeiw")]
-position = Vector2(252, 285)
+position = Vector2(122, 281)
 collision_layer = 11
 collision_mask = 7
 floor_snap_length = 6.0
@@ -2101,6 +2101,7 @@ position = Vector2(5842, 173)
 win_condition = true
 
 [node name="Checkpoint2" parent="CheckpointHolder" instance=ExtResource("15_p6dng")]
+visible = false
 position = Vector2(121, 284)
 
 [node name="CoinHolder" type="Node2D" parent="."]

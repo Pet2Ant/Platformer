@@ -100,15 +100,15 @@ func add_force(explosion_position : Vector2):
 	
 	if direction < 0:
 		if SPEED > 0:
-			speed_dir = 80
+			speed_dir = 100
 		elif SPEED < 0 :
-			speed_dir = -80
+			speed_dir = -100
 		velocity.x = -applied_impulse_force * speed_dir 
 	elif direction > 0:
 		if SPEED > 0:
-			speed_dir = 80
+			speed_dir = 100
 		elif SPEED < 0 :
-			speed_dir = -80
+			speed_dir = -100
 		velocity.x = applied_impulse_force * speed_dir 
 	
 func take_damage(damage_amount : int):

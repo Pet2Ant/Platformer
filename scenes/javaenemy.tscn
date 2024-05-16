@@ -35,7 +35,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_5k8o5"]
 resource_name = "Fire"
-length = 0.5
+length = 1.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -44,7 +44,7 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"times": PackedFloat32Array(0.1, 0.8, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [ExtResource("1_75a04"), ExtResource("2_t0yhr"), ExtResource("1_75a04")]
@@ -56,7 +56,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3),
+"times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],

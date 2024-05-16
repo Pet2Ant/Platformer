@@ -22,7 +22,7 @@ func shoot():
 	while shooting:
 		$AnimationPlayer.play("Fire")
 		$AudioStreamPlayer2D.play()
-		await get_tree().create_timer(0.55).timeout
+		await get_tree().create_timer(1.3).timeout
 
 		
 func fire():

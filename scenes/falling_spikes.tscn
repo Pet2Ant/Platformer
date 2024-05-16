@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/falling_spikes.gd" id="1_24x71"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nmup"]
-size = Vector2(20, 134.5)
+size = Vector2(16, 134.5)
 
 [sub_resource type="Animation" id="Animation_svlbo"]
 length = 0.001
