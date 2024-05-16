@@ -15,6 +15,7 @@ func boss_slained():
 
 
 func spawn():
+	#commit
 	var degree = degree_node.instantiate()
 	degree.position = get_parent().get_parent().get_parent().position + Vector2(378,219)
 	get_tree().current_scene.add_child(degree)
