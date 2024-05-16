@@ -1705,6 +1705,7 @@ text = "Next Level"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_m6qek")
 volume_db = -8.136
+autoplay = true
 
 [connection signal="pressed" from="UIManager2/PauseMenu/VBoxContainer/HBoxContainer/Resume" to="UIManager2" method="_on_resume_pressed"]
 [connection signal="pressed" from="UIManager2/PauseMenu/VBoxContainer/HBoxContainer2/Restart" to="UIManager2" method="_on_restart_pressed"]
